@@ -35,6 +35,7 @@ def update():
 	Stage.update()
 	Mob.update()
 	User.update()
+	
 	for Shot in Bullet:
 		Shot.update(User.x)
 		
@@ -43,13 +44,22 @@ def draw():
 	global Count,i
 	clear_canvas()
 	
+	#다 그리기
 	Stage.draw()
 	Stage.draw2()
-	
 	Mob.draw()
 	User.draw()
 	for Shot in Bullet:
 		Shot.draw()
+		# 충돌사각형
+		Attack.draw_bb(Shot)
+		               
+	Player.draw_bb(User)
+	Monster.draw_bb(Mob)
+	
+	
+	
+	
 	
 	# T/F ?? Count of Bullet
 	Count += 2
@@ -66,13 +76,16 @@ def draw():
 
 def handle_events():
 	global User
-	global Player
+	global BackGround
+	global Stage
 	events = get_events()
 	for event in events:
 		if event.type == SDL_QUIT:
 			game_framework.quit()
 		else :
 			User.handle_event(event)
+			Stage.handle_event(event)
+			
 			
 	
 	
