@@ -8,9 +8,9 @@ class BackGround:
 	Map1, Map2, Map3 = 0,1,2
 	
 	def __init__(self):
-		self.stage1 = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\BackGround\\03.png')
-		self.stage2 = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\BackGround\\99.png')
-		self.stage3 = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\BackGround\\12.png')
+		self.stage1 = load_image('D:\\2-2\\2DGP\\BackGround\\03.png')
+		self.stage2 = load_image('D:\\2-2\\2DGP\\BackGround\\99.png')
+		self.stage3 = load_image('D:\\2-2\\2DGP\\BackGround\\12.png')
 		#self.Cloud
 		#self.Cloud2
 		#self.Black_Cloud

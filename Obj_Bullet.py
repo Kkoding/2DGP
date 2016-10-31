@@ -5,7 +5,7 @@ import Main
 
 class Attack:
 	def __init__(self):
-		self.b_image = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\Player\\bullet_sunny.png')
+		self.b_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny.png')
 		self.bX =100
 		self.bY = 50
 		self.Drawing = False

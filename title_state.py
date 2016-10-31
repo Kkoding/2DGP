@@ -10,7 +10,7 @@ image = None
 def enter():
     global  image
     open_canvas(600,800)
-    image=load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\BackGround\\Title.png')
+    image=load_image('D:\\2-2\\2DGP\\BackGround\\Title.png')
 
 def exit():
     global image

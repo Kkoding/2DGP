@@ -29,7 +29,7 @@ BossNum=0
 	
 def enter():
 	global Stage, Bullet, Mob, User,King, BossShot
-	open_canvas(600,800)
+	open_canvas(600,800,sync=True)
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	Stage = BackGround()
 	BossShot = [Boss() for i in range(30)]
@@ -49,7 +49,13 @@ def update():
 		if Bullet[i].Drawing == True:
 			if Bullet[i].collide(Mob) == True:
 				print("Mob Col")
-				Bullet[i].Drawing=False
+				if Mob.Damaged==True:
+					Mob.Damege(2)
+				if Mob.MonHp<14:
+					Mob.Damaged = True
+				elif Mob.MonHp>14:
+					Mob.Damaged=False
+				Bullet[i].Drawing = False
 			elif Bullet[i].collide(King) == True:
 				King.FlagBossHp=True
 				print("King Col")

@@ -7,8 +7,8 @@ import Main
 
 class Boss:
 	def __init__(self):
-		self.Boss_image = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Boss\\slime.png')
-		self.BossHpImage=load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Boss\\boss_hp.png')
+		self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
+		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
 		self.Boss_YPos = 1000
 		self.Boss_XPos = 300
 		self.BYPos = self.Boss_YPos
@@ -16,7 +16,7 @@ class Boss:
 		self.Bframe = 0
 		self.FlagBossHp=False
 		self.BossHp=12
-		self.Boss_Bullet = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\bullet_boss.png')
+		self.Boss_Bullet = load_image('D:\\2-2\\2DGP\\Monster\\bullet_boss.png')
 		self.Count1=0
 		self.BulletX=300
 		self.BulletY=700
@@ -35,7 +35,7 @@ class Boss:
 	def draw(self):
 		if self.BossHp!=0:
 			self.Boss_image.clip_draw(300 * self.Bframe, 0, 300, 256, self.BXPos, self.BYPos)
-		if self.FlagBossHp==False:
+		if self.FlagBossHp==True:
 			self.BossHpImage.clip_draw(0,0,self.BossHp*100,25,0,790)
 		
 			

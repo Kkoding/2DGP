@@ -9,8 +9,8 @@ class Player:
 	Move_Stop,Move_Left, Move_Right = 0,1,2
 	
 	def __init__(self):
-		self.p_image = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\Player\\character1.png')
-		self.Sunny = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\Player\\sunny.png')
+		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
+		self.Sunny = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')
 		self.frame = 0
 		self.x=100
 		self.y = 50
