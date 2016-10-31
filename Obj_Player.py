@@ -16,6 +16,8 @@ class Player:
 		self.y = 50
 		self.state=self.Move_Stop
 		self.speed = 10
+		self.damage=1
+		
 	def update(self):
 		self.frame = (self.frame + 1) % 4
 		self.SunnyFrame = (self.frame + 1) % 3
