@@ -8,6 +8,7 @@ import Main
 class Boss:
 	def __init__(self):
 		self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
+		self.Slime_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime die.png')
 		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
 		self.Boss_YPos = 1000
 		self.Boss_XPos = 300
@@ -33,8 +34,10 @@ class Boss:
 			self.BulletY-=10
 	
 	def draw(self):
-		if self.BossHp!=0:
+		if self.BossHp>=0:
 			self.Boss_image.clip_draw(300 * self.Bframe, 0, 300, 256, self.BXPos, self.BYPos)
+		elif self.BossHp<0:
+			self.Slime_Die_image.clip_draw(0, 0, 300, 256, self.BXPos, self.BYPos)
 		if self.FlagBossHp==True:
 			self.BossHpImage.clip_draw(0,0,self.BossHp*100,25,0,790)
 		

@@ -23,7 +23,7 @@ Bullet = None
 Mob = None
 User = None
 King = None
-name = Map1
+MapState = Map1
 BossShot=None
 BossNum=0
 	
