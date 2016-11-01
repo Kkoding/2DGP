@@ -5,10 +5,19 @@ import game_framework
 import Main
 
 class Monster:
-	def __init__(self):
+	Limit=4
+	def __init__(self,i):
 		self.Mon1=load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Mon\\Mon1.png')
-		self.SizeOfMobX = 300
-		self.SizeOfMobY = 800
+		self.Red = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Mon\\Red.png')
+		
+		self.SizeOfMobX = 70 + (155 * (i % 4))
+		if i<self.Limit:
+			self.SizeOfMobY = 750
+		elif i>=self.Limit and i<self.Limit*2:
+			self.SizeOfMobY = 750 + 300
+		elif i>=self.Limit*2:
+			self.SizeOfMobY = 750 + 300*2
+			
 		self.y = self.SizeOfMobY
 		self.x = self.SizeOfMobX
 		self.MonFrame=0
@@ -30,19 +39,21 @@ class Monster:
 		self.Hp14=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\14.png')
 		self.Damaged=False
 		
-	def update(self ):
+	def update(self,i):
 		self.MonFrame =(self.MonFrame +1) % 4
-		self.y -=10
+		self.y -= 10
 	
 	def Damege(self,num):
 		self.MonHp += num
 	
-	def draw(self):
+	def draw(self,i):
 		if self.MonHp<14:
-			self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.x,self.y)
+			self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.SizeOfMobX,self.y)
 		if self.Damaged == True:
 			self.drawHp(self.MonHp)
-			
+		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*i, self.y)
+		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*2, self.y)
+		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*3, self.y)
 			
 	def drawHp(self,hp):
 		if hp == 0:
@@ -74,7 +85,7 @@ class Monster:
 		elif hp==13:
 			self.Hp13.clip_draw(0, 0, 132, 27, self.x, self.y -60)
 		elif hp==14:
-			self.y=0
+			self.y= -350
 			self.Hp14.clip_draw(0, 0, 132, 27, self.x, self.y -60)
 		
 		
