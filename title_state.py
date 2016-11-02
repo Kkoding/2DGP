@@ -9,7 +9,7 @@ image = None
 
 def enter():
     global  image
-    open_canvas(600,800)
+    open_canvas(384,512)
     image=load_image('D:\\2-2\\2DGP\\BackGround\\Title.png')
 
 def exit():
@@ -17,7 +17,6 @@ def exit():
     close_canvas()
     del(image)
    
-
 def handle_events():
     events=get_events()
     for event in events:
@@ -33,7 +32,7 @@ def handle_events():
 
 def draw():
     clear_canvas()
-    image.draw(400,300)
+    image.draw(192,256)
     update_canvas()
     pass
 

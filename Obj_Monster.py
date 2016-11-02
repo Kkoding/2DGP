@@ -7,8 +7,8 @@ import Main
 class Monster:
 	Limit=4
 	def __init__(self,i):
-		self.Mon1=load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Mon\\Mon1.png')
-		self.Red = load_image('D:\\2-2\\2DGameProgramming\\0FlightResource\\Monster\\Mon\\Red.png')
+		self.Mon1=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Mon1.png')
+		self.Red = load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Red.png')
 		
 		self.SizeOfMobX = 70 + (155 * (i % 4))
 		if i<self.Limit:

@@ -30,6 +30,9 @@ BossNum=0
 
 MobLimit=12
 
+
+
+RedMonster=None
 #추가할 것들.
 #   Red몹
 #   각 탄마다 보스 깨고나서 스크롤링
@@ -48,9 +51,12 @@ def enter():
 	User = Player()
 	King = Boss()
 	
+	RedMonster=[Monster(i) for i in range(MobLimit)]
+	
+	
 def update():
 	global MapState, Stage, BulltNum, i
-	Stage.update()
+	Stage.update(MapState)
 	for i in range(MobLimit):
 		Mob[i].update(i)
 	User.update()
