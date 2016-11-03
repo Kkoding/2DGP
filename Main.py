@@ -30,19 +30,17 @@ BossNum=0
 
 MobLimit=12
 
-
-
 RedMonster=None
 #추가할 것들.
 #   Red몹
 #   각 탄마다 보스 깨고나서 스크롤링
 #   보스구현
 #   보스 탄환알고리즘 구현하기(시간지남에 따라서 패턴반복)
-#
-#
+
+Cloud = None
 
 def enter():
-	global Stage, Bullet, Mob, User,King, BossShot
+	global Stage, Bullet, Mob, User,King, BossShot, Cloud
 	open_canvas(600,800,sync=True)
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	Stage = BackGround()
@@ -50,15 +48,15 @@ def enter():
 	Mob = [Monster(i) for i in range(MobLimit)]
 	User = Player()
 	King = Boss()
-	
+	Cloud = BackGround()
 	RedMonster=[Monster(i) for i in range(MobLimit)]
-	
 	
 def update():
 	global MapState, Stage, BulltNum, i
+	global Cloud
 	Stage.update(MapState)
 	for i in range(MobLimit):
-		Mob[i].update(i)
+		Mob[i].update(MapState)
 	User.update()
 	King.update()
 	
@@ -89,18 +87,22 @@ def update():
 					print("King Col")
 					King.getHp(User.damage)
 					Bullet[i].Drawing = False
-				
+	
+	#구름그리기
+	Cloud.update(MapState)
+	
 
 def draw():
 	global Count,i, BossNum
 	global Mob,BulltNum
+	global Cloud
 	clear_canvas()
 	
 	#다 그리기
 	Stage.draw()
 	Stage.draw2()
 	for i in range(MobLimit):
-		Mob[i].draw(i)
+		Mob[i].draw(MapState)
 	User.draw()
 	King.draw(MapState)
 	
@@ -128,6 +130,9 @@ def draw():
 			BulltNum += 1
 		if BulltNum > Bullet_Max - 1:
 			BulltNum = 0
+	
+	#구름 그리기
+	Cloud.drawCloud(MapState)
 	
 	update_canvas()
 	delay(0.05)

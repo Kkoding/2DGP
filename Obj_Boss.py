@@ -6,12 +6,13 @@ import Main
 
 
 class Boss:
+	Map1, Map2, Map3 = 0, 1,2
 	def __init__(self):
 		self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
 		self.Slime_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime die.png')
 		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
 		self.Stone_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Stone.png')
-		self.Boss_YPos = 1000
+		self.Boss_YPos = 3000
 		self.Boss_XPos = 300
 		self.BYPos = self.Boss_YPos
 		self.BXPos = self.Boss_XPos
@@ -19,34 +20,35 @@ class Boss:
 		self.FlagBossHp=False
 		
 		self.Boss_Bullet = load_image('D:\\2-2\\2DGP\\Monster\\bullet_boss.png')
-		self.Count1=0
-		self.BulletX=300
+		self.BulletX=30
 		self.BulletY=700
 		
 		self.SlimeHp = 12
 		self.StoneHp = 12
 		
 		self.imagetimer=0
-	
+		self.ChangeScene=0
+		
 	def update(self):
 		self.imagetimer+=1
 		if self.imagetimer % 2 == 0:
 			self.Bframe = (self.Bframe + 1) % 4
+		#보스 내랴오는것
 		if self.BYPos > 680:
 			self.BYPos -= 10
-		if self.Count1 <100:
-			self.Count1+=1
-		if self.Count1==100:
-			self.BulletX-=10
-			self.BulletY-=10
+			
+		if self.SlimeHp <= 0 and self.ChangeScene <30:
+			self.ChangeScene+=1
+			
+		
 	
 	def draw(self,BossNum):
-		if BossNum == 0:
+		if BossNum == self.Map1:
 			if self.SlimeHp>=0:
 				self.Boss_image.clip_draw(300 * self.Bframe, 0, 300, 256, self.BXPos, self.BYPos)
-			elif self.SlimeHp<0:
+			else:
 				self.Slime_Die_image.clip_draw(0, 0, 300, 256, self.BXPos, self.BYPos)
-		elif BossNum==1:
+		elif BossNum == self.Map2:
 			if self.StoneHp>0:
 				self.Stone_image.clip_draw(256*self.Bframe,0,256,205, self.BXPos, self.BYPos)
 		if self.FlagBossHp == True:
@@ -57,8 +59,11 @@ class Boss:
 			return 0
 		elif self.StoneHp>0:
 			self.FlagBossHp=False
-			return 1
-		
+			if self.SlimeHp <= 0:
+				if self.ChangeScene <30:
+					return 0
+				else:
+					return 1
 			
 	def drawShot(self,Num):
 		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BulletX + Num*10, self.BulletY)
@@ -70,7 +75,7 @@ class Boss:
 		return self.BXPos - 120 , self.BYPos - 120, self.BXPos + 120, self.BYPos + 20
 	
 	def getHp(self,damage):
-		if self.SlimeHp>0:
+		if self.SlimeHp>=0:
 			self.SlimeHp-= damage
 		
 	#def Patter1(self):

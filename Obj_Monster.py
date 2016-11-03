@@ -5,6 +5,8 @@ import game_framework
 import Main
 
 class Monster:
+	
+	Mon1, BlueMonster, PinkMonster,RedMonster = 0,1,2,3
 	Limit=4
 	def __init__(self,i):
 		self.Mon1=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Mon1.png')
@@ -14,9 +16,9 @@ class Monster:
 		if i<self.Limit:
 			self.SizeOfMobY = 750
 		elif i>=self.Limit and i<self.Limit*2:
-			self.SizeOfMobY = 750 + 300
+			self.SizeOfMobY = 750 + 400
 		elif i>=self.Limit*2:
-			self.SizeOfMobY = 750 + 300*2
+			self.SizeOfMobY = 750 + 450*2
 			
 		self.y = self.SizeOfMobY
 		self.x = self.SizeOfMobX
@@ -39,14 +41,14 @@ class Monster:
 		self.Hp14=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\14.png')
 		self.Damaged=False
 		
-	def update(self,i):
+	def update(self,MonsterNum):
 		self.MonFrame =(self.MonFrame +1) % 4
 		self.y -= 10
 	
 	def Damege(self,num):
 		self.MonHp += num
 	
-	def draw(self,i):
+	def draw(self,MonsterNum):
 		if self.MonHp<14:
 			self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.SizeOfMobX,self.y)
 		if self.Damaged == True:
@@ -87,9 +89,7 @@ class Monster:
 		elif hp==14:
 			self.y= -350
 			self.Hp14.clip_draw(0, 0, 132, 27, self.x, self.y -60)
-		
-		
-	
+
 	def draw_bb(self):
 		draw_rectangle(*self.get_bb())
 			
