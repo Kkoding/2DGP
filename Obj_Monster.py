@@ -10,19 +10,20 @@ class Monster:
 	Limit=4
 	def __init__(self,i):
 		self.Mon1=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Mon1.png')
-		self.Red = load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Red.png')
+		self.Yellow = load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Yellow.png')
 		
 		self.SizeOfMobX = 70 + (155 * (i % 4))
 		if i<self.Limit:
-			self.SizeOfMobY = 750
+			self.SizeOfMobY = 1350
 		elif i>=self.Limit and i<self.Limit*2:
-			self.SizeOfMobY = 750 + 400
+			self.SizeOfMobY = 1350 + 400
 		elif i>=self.Limit*2:
-			self.SizeOfMobY = 750 + 450*2
+			self.SizeOfMobY = 1350 + 450*2
 			
 		self.y = self.SizeOfMobY
 		self.x = self.SizeOfMobX
 		self.MonFrame=0
+		self.MonYFrame=0
 		self.MonHp=0
 		self.Hp0=load_image ('D:\\2-2\\2DGP\\Monster\\Mon\\0.png')
 		self.Hp1=load_image ('D:\\2-2\\2DGP\\Monster\\Mon\\1.png')
@@ -39,18 +40,24 @@ class Monster:
 		self.Hp12=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\12.png')
 		self.Hp13=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\13.png')
 		self.Hp14=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\14.png')
+		
+		
+		
 		self.Damaged=False
 		
-	def update(self,MonsterNum):
+	def update(self,Map):
 		self.MonFrame =(self.MonFrame +1) % 4
 		self.y -= 10
 	
 	def Damege(self,num):
 		self.MonHp += num
 	
-	def draw(self,MonsterNum):
+	def draw(self,Map):
 		if self.MonHp<14:
-			self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.SizeOfMobX,self.y)
+			if Map == 0:
+				self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.SizeOfMobX,self.y)
+			elif Map == 1:
+				self.Yellow.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
 		if self.Damaged == True:
 			self.drawHp(self.MonHp)
 		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*i, self.y)
@@ -89,7 +96,18 @@ class Monster:
 		elif hp==14:
 			self.y= -350
 			self.Hp14.clip_draw(0, 0, 132, 27, self.x, self.y -60)
-
+	
+	def collide(self, a):
+		left_a, bottom_a, right_a, top_a = a.get_bb()
+		left_b, bottom_b, right_b, top_b = self.get_bb()
+		
+		if left_a > right_b: return False
+		if right_a < left_b: return False
+		if top_a < bottom_b: return False
+		if bottom_a > top_b: return False
+		return True
+	
+	
 	def draw_bb(self):
 		draw_rectangle(*self.get_bb())
 			

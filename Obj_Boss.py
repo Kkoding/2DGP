@@ -7,15 +7,28 @@ import Main
 
 class Boss:
 	Map1, Map2, Map3 = 0, 1,2
-	def __init__(self):
-		self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
+	Boss1, Boss2, Boss3 = 10,11,22
+	def __init__(self,select):
+		if select==0:
+			self.Boss=self.Boss1
+			self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
+		elif select==1:
+			self.Boss = self.Boss2
+			self.Stone_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Stone.png')
+		elif (select == 2):
+			self.Boss=self.Boss3
+			self.Reds_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Reds.png')
+			
 		self.Slime_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime die.png')
+		
 		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
-		self.Stone_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Stone.png')
+		
+		
 		self.Boss_YPos = 3000
 		self.Boss_XPos = 300
 		self.BYPos = self.Boss_YPos
 		self.BXPos = self.Boss_XPos
+		self.SYPos = self.Boss_YPos
 		self.Bframe = 0
 		self.FlagBossHp=False
 		
@@ -29,28 +42,32 @@ class Boss:
 		self.imagetimer=0
 		self.ChangeScene=0
 		
-	def update(self):
+	def update(self,Map):
 		self.imagetimer+=1
 		if self.imagetimer % 2 == 0:
 			self.Bframe = (self.Bframe + 1) % 4
 		#보스 내랴오는것
-		if self.BYPos > 680:
-			self.BYPos -= 10
-			
-		if self.SlimeHp <= 0 and self.ChangeScene <30:
+		if self.Boss == self.Boss1:
+			if self.BYPos > 680:
+				self.BYPos -= 10
+		elif self.Boss == self.Boss2:
+			if self.SYPos>680:
+				self.SYPos-=10
+		
+		#구름띄울떄필요함
+		if self.SlimeHp <= 0 and self.ChangeScene <45:
 			self.ChangeScene+=1
 			
-		
-	
+
 	def draw(self,BossNum):
-		if BossNum == self.Map1:
+		if  self.Boss == self.Boss1:
 			if self.SlimeHp>=0:
 				self.Boss_image.clip_draw(300 * self.Bframe, 0, 300, 256, self.BXPos, self.BYPos)
 			else:
 				self.Slime_Die_image.clip_draw(0, 0, 300, 256, self.BXPos, self.BYPos)
-		elif BossNum == self.Map2:
+		elif self.Boss == self.Boss2:
 			if self.StoneHp>0:
-				self.Stone_image.clip_draw(256*self.Bframe,0,256,205, self.BXPos, self.BYPos)
+				self.Stone_image.clip_draw(256*self.Bframe,0,256,205, self.BXPos, self.SYPos)
 		if self.FlagBossHp == True:
 			self.BossHpImage.clip_draw(0, 0, self.SlimeHp * 100, 25, 0, 790)
 	
@@ -58,9 +75,8 @@ class Boss:
 		if self.SlimeHp>0:
 			return 0
 		elif self.StoneHp>0:
-			self.FlagBossHp=False
 			if self.SlimeHp <= 0:
-				if self.ChangeScene <30:
+				if self.ChangeScene <45:
 					return 0
 				else:
 					return 1
@@ -74,9 +90,10 @@ class Boss:
 	def get_bb(self):
 		return self.BXPos - 120 , self.BYPos - 120, self.BXPos + 120, self.BYPos + 20
 	
-	def getHp(self,damage):
+	def getHp(self,damage,Map):
 		if self.SlimeHp>=0:
 			self.SlimeHp-= damage
+		
 		
 	#def Patter1(self):
 		

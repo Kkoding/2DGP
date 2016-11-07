@@ -75,7 +75,8 @@ class BackGround:
 	def drawCloud(self, Map):
 		if Map == self.Map2:
 			self.Cloudy.draw_to_origin(0, self.CloudY1, 600, 1536)
-	
+		#elif Map == self.Map3:
+		#	self.Cloudy.draw_to_origin(0, self.CloudY1, 600, 1536)
 	def handle_event(self, event):
 		if event.key == SDLK_1:
 			self.BackGround_State= BackGround.Map1
