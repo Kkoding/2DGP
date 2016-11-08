@@ -26,7 +26,7 @@ Mob = None
 User = None
 King = None
 StoneKing=None
-MapState = Map1
+MapState = None
 BossShot=None
 BossNum = 0
 
@@ -41,8 +41,9 @@ YellowMonster=None
 
 Cloud = None
 YellowMonster=None
+RedMonster=None
 def enter():
-	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster
+	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster
 	open_canvas(600,800,sync=True)
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	Stage = BackGround()
@@ -52,18 +53,22 @@ def enter():
 	King = [Boss(i)for i in range(3)]
 	Cloud = BackGround()
 	YellowMonster=[Monster(i) for i in range(MobLimit)]
+	RedMonster = [Monster(i) for i in range(MobLimit)]
+	MapState=Map1
 	
 def update():
-	global MapState, Stage, BulltNum, i,BossNum
+	global MapState, Stage, BulltNum, i,BossNum, King
 	global Cloud
 	Stage.update(MapState)
 	if MapState == Map1:
 		for i in range(MobLimit):
 			Mob[i].update(MapState)
 	elif MapState == Map2:
-		
 		for i in range(MobLimit):
 			YellowMonster[i].update(MapState)
+	elif MapState == Map3:
+		for i in range(MobLimit):
+			RedMonster[i].update(MapState)
 			
 	User.update()
 		
@@ -71,13 +76,21 @@ def update():
 		King[0].update(MapState)
 	elif MapState == Map2:
 		King[1].update(MapState)
+		if King[1].Change2==True:
+			#print("ㅁㄴㅇㅁㄴㅇ")
+			King[0].Change2 = True
 	
 	
 	
+	#보스체크:
+	if King[0].Change2==False:
+		MapState = King[0].BossLevel()
+	elif King[0].Change2==True:
+		#print("asdasdsad")
+		MapState =2
 	
-	#보스체크
-	MapState = King[BossNum].BossLevel()
-	King[1].BossLevel()
+	
+	
 	#맵 선택체크
 	Stage.MapLevel(MapState)
 	
@@ -85,6 +98,7 @@ def update():
 	for Shot in Bullet:
 		Shot.update(User.x)
 		
+	#총알과 몬스터`s
 	for i in range(Bullet_Max):
 		for j in range(MobLimit):
 			if Bullet[i].Drawing == True:
@@ -115,35 +129,57 @@ def update():
 							del YellowMonster[j]
 							YellowMonster[j].Damaged=False
 						Bullet[i].Drawing = False
-					elif Bullet[i].collide(King[1]) == True:
+					elif Bullet[i].collide2(King[1]) == True:
 						King[1].FlagBossHp=True
 						King[1].getHp(User.damage,MapState)
 						Bullet[i].Drawing = False
+					
+					elif MapState == Map3:
+						if Bullet[i].collide(RedMonster[j]) == True:
+							# 들어가는 데미지
+							if RedMonster[j].Damaged == True:
+								RedMonster[j].Damege(2)
+							if RedMonster[j].MonHp < 14:
+								RedMonster[j].Damaged = True
+							elif RedMonster[j].MonHp > 14:
+								del RedMonster[j]
+								RedMonster[j].Damaged = False
+							Bullet[i].Drawing = False
+						elif Bullet[i].collide3(King[2]) == True:
+							King[2].FlagBossHp = True
+							King[2].getHp(User.damage, MapState)
+							Bullet[i].Drawing = False
 					
 	#구름그리기
 	Cloud.update(MapState)
 	
 def draw():
 	global Count,i, BossNum
-	global Mob,BulltNum,YellowMonster
+	global Mob,BulltNum,YellowMonster,King,MapState,RedMonster
 	global Cloud
 	clear_canvas()
 	
-	#다 그리기
+	#다 그리기(스테이지)
 	Stage.draw()
 	Stage.draw2()
+	#몬스터
 	if MapState == Map1:
 		for i in range(MobLimit):
 			Mob[i].draw(MapState)
 	elif MapState == Map2:
 		for i in range(MobLimit):
 			YellowMonster[i].draw(MapState)
+	elif MapState == Map3:
+		for i in range(MobLimit):
+			RedMonster[i].draw(MapState)
 		 
 	User.draw()
 	if MapState == Map1:
 		King[0].draw(MapState)
 	elif MapState == Map2:
 		King[1].draw(MapState)
+	elif MapState == Map3:
+		King[2].draw(MapState)
 		
 	for Shot in Bullet:
 		Shot.draw()
@@ -158,10 +194,16 @@ def draw():
 	elif MapState == Map2:
 		for i in range(MobLimit):
 			YellowMonster[i].draw_bb()
+	elif MapState == Map3:
+		for i in range(MobLimit):
+			RedMonster[i].draw_bb()
 	
 	if MapState == Map1:
 		Boss.draw_bb(King[0])
-	Boss.draw_bb(King[1])
+	if MapState == Map2:
+		Boss.draw_bb2(King[1])
+	if MapState == Map3:
+		Boss.draw_bb3(King[2])
 		
 	# T/F ?? Count of Bullet
 	Count += 3

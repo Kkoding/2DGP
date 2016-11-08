@@ -11,7 +11,7 @@ class Monster:
 	def __init__(self,i):
 		self.Mon1=load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Mon1.png')
 		self.Yellow = load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Yellow.png')
-		
+		self.Red = load_image('D:\\2-2\\2DGP\\Monster\\Mon\\Reds.png')
 		self.SizeOfMobX = 70 + (155 * (i % 4))
 		if i<self.Limit:
 			self.SizeOfMobY = 1350
@@ -58,8 +58,12 @@ class Monster:
 				self.Mon1.clip_draw(180*self.MonFrame,0,180,120,self.SizeOfMobX,self.y)
 			elif Map == 1:
 				self.Yellow.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
+			elif Map == 2:
+				self.Red.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
+				 
 		if self.Damaged == True:
 			self.drawHp(self.MonHp)
+			
 		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*i, self.y)
 		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*2, self.y)
 		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*3, self.y)

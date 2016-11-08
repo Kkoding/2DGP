@@ -22,10 +22,12 @@ class BackGround:
 		self.y1 = 0
 		self.y2 = 800
 		self.CloudY1 = 1536
+		self.CloudY2 = 1536
 		
 		self.BackGround_State = self.Map1
 		self.Map2Timer=0
 		self.Mapping2=False
+		self.Mapping3=False
 	def update(self, Map):
 		#if Stage == 0:
 		#if Stage ==1:
@@ -37,17 +39,14 @@ class BackGround:
 		if self.y2 == -800:
 			self.y2 = 800
 			
-		if Map == self.Map2:
+		if (Map == self.Map2):
 			self.CloudY1 -= 40
 			if self.CloudY1 <0:
 				self.Mapping2 = True
-				
-		#if self.BackGround_State == self.map2:
-		#	if self.Map2Timer<100:
-		#		self.Map2Timer+=1
-	
-	#def updateCloud(self, Map):
-		
+		if (Map == self.Map3):
+			self.CloudY2-=40
+			if self.CloudY2<0:
+				self.Mapping3=True
 	
 	
 	def draw(self):
@@ -59,7 +58,10 @@ class BackGround:
 			else:
 				self.stage1.draw_to_origin(0, self.y2, 600, 800)
 		elif self.BackGround_State == self.Map3:
-			self.stage3.draw_to_origin(0, self.y2, 600, 800)
+			if self.Mapping3 == True:
+				self.stage3.draw_to_origin(0, self.y2, 600, 800)
+			else:
+				self.stage2.draw_to_origin(0, self.y2, 600, 800)
 			
 	def draw2(self):
 		if self.BackGround_State == self.Map1:
@@ -70,11 +72,17 @@ class BackGround:
 			else:
 				self.stage1.draw_to_origin(0, self.y1, 600, 800)
 		elif self.BackGround_State == self.Map3:
-			self.stage3.draw_to_origin(0, self.y1, 600, 800)
+			if self.Mapping3 == True:
+				self.stage3.draw_to_origin(0, self.y1, 600, 800)
+			else:
+				self.stage2.draw_to_origin(0, self.y1, 600, 800)
 			
 	def drawCloud(self, Map):
 		if Map == self.Map2:
 			self.Cloudy.draw_to_origin(0, self.CloudY1, 600, 1536)
+		elif Map==self.Map3:
+			self.Cloudy.draw_to_origin(0, self.CloudY2, 600, 1536)
+			
 		#elif Map == self.Map3:
 		#	self.Cloudy.draw_to_origin(0, self.CloudY1, 600, 1536)
 	def handle_event(self, event):
