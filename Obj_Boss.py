@@ -75,7 +75,6 @@ class Boss:
 				self.Boss_image.clip_draw(300 * self.Bframe, 0, 300, 256, self.BXPos, self.BYPos)
 			else:
 				self.Slime_Die_image.clip_draw(0, 0, 300, 256, self.BXPos, self.BYPos)
-				
 		elif self.Boss == self.Boss2:
 			if (self.SlimeHp>=0):
 				self.Stone_image.clip_draw(256*self.Bframe,0,256,205, self.BXPos, self.SYPos)
@@ -85,10 +84,9 @@ class Boss:
 					self.Stone_Die_image.clip_draw(0, 0, 256, 205, self.BXPos, self.SYPos)
 				else:
 					self.Change2 = True
-				
 		elif self.Boss==self.Boss3:
 			if self.SlimeHp>=0:
-				self.Reds_image.clip_draw(512*self.Bframe,0,512,512,self.BXPos,self.RYPos)
+				self.Reds_image.clip_draw(512*self.Bframe%4,0,512,512,self.BXPos,self.RYPos)
 			else:
 				self.Red_Die_image.clip_draw(0, 0, 500, 485, self.BXPos, self.RYPos )
 				

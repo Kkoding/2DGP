@@ -79,7 +79,8 @@ def update():
 		if King[1].Change2==True:
 			#print("ㅁㄴㅇㅁㄴㅇ")
 			King[0].Change2 = True
-	
+	elif MapState == Map3:
+		King[2].update(MapState)
 	
 	
 	#보스체크:
@@ -133,19 +134,19 @@ def update():
 						King[1].FlagBossHp=True
 						King[1].getHp(User.damage,MapState)
 						Bullet[i].Drawing = False
-					
-					elif MapState == Map3:
-						if Bullet[i].collide(RedMonster[j]) == True:
-							# 들어가는 데미지
-							if RedMonster[j].Damaged == True:
-								RedMonster[j].Damege(2)
-							if RedMonster[j].MonHp < 14:
-								RedMonster[j].Damaged = True
-							elif RedMonster[j].MonHp > 14:
-								del RedMonster[j]
-								RedMonster[j].Damaged = False
-							Bullet[i].Drawing = False
-						elif Bullet[i].collide3(King[2]) == True:
+						
+				elif MapState == Map3:
+					if Bullet[i].collide(RedMonster[j]) == True:
+						# 들어가는 데미지
+						if RedMonster[j].Damaged == True:
+							RedMonster[j].Damege(2)
+						if RedMonster[j].MonHp < 14:
+							RedMonster[j].Damaged = True
+						elif RedMonster[j].MonHp > 14:
+							del RedMonster[j]
+							RedMonster[j].Damaged = False
+						Bullet[i].Drawing = False
+					elif Bullet[i].collide3(King[2]) == True:
 							King[2].FlagBossHp = True
 							King[2].getHp(User.damage, MapState)
 							Bullet[i].Drawing = False
