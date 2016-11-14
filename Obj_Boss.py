@@ -1,9 +1,11 @@
 from pico2d import *
 
+import random
 import game_framework
 
 import Main
 
+import math
 
 class Boss:
 	Map1, Map2, Map3 = 0, 1,2
@@ -134,7 +136,21 @@ class Boss:
 			self.SlimeHp-= damage
 		
 		
-	#def Patter1(self):
+	
+	def Pattern1_Draw(self):
+		self.Boss_Bullet.clip_draw(0,0,52,52,200,300)
+		#math.sin()
+			
+	def BossAttack(self, num):
+		if (num == self.Boss1):
+			self.Pattern1_Draw()
+			
+		
+	
+
+			
+		
+		
 		
 		
 		

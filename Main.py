@@ -1,5 +1,6 @@
 import random
 import os
+import math
 
 from pico2d import *
 
@@ -217,6 +218,8 @@ def draw():
 	
 	#구름 그리기
 	Cloud.drawCloud(MapState)
+	
+	Boss.BossAttack(MapState)
 	
 	update_canvas()
 	delay(0.05)
