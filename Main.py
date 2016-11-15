@@ -34,6 +34,7 @@ BossNum = 0
 MobLimit=12
 
 YellowMonster=None
+
 #추가할 것들.
 #   Red몹
 #   각 탄마다 보스 깨고나서 스크롤링
@@ -43,8 +44,10 @@ YellowMonster=None
 Cloud = None
 YellowMonster=None
 RedMonster=None
+BossAttack=None
+BossNum=0
 def enter():
-	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster
+	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster,BossAttack
 	open_canvas(600,800,sync=True)
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	Stage = BackGround()
@@ -56,9 +59,10 @@ def enter():
 	YellowMonster=[Monster(i) for i in range(MobLimit)]
 	RedMonster = [Monster(i) for i in range(MobLimit)]
 	MapState=Map1
+	BossAttack=[Boss(i) for i in range(10)]
 	
 def update():
-	global MapState, Stage, BulltNum, i,BossNum, King
+	global MapState, Stage, BulltNum, i,BossNum, King,BossAttack
 	global Cloud
 	Stage.update(MapState)
 	if MapState == Map1:
@@ -111,7 +115,7 @@ def update():
 							Mob[j].Damege(2)
 						if Mob[j].MonHp<14:
 							Mob[j].Damaged = True
-						elif Mob[j].MonHp>14:
+						elif Mob[j].MonHp>14 or Mob[j].y <0:
 							del Mob[j]
 							Mob[j].Damaged=False
 						Bullet[i].Drawing = False
@@ -127,7 +131,7 @@ def update():
 							YellowMonster[j].Damege(2)
 						if YellowMonster[j].MonHp<14:
 							YellowMonster[j].Damaged = True
-						elif YellowMonster[j].MonHp>14:
+						elif YellowMonster[j].MonHp>14or YellowMonster[j].y <0:
 							del YellowMonster[j]
 							YellowMonster[j].Damaged=False
 						Bullet[i].Drawing = False
@@ -143,7 +147,7 @@ def update():
 							RedMonster[j].Damege(2)
 						if RedMonster[j].MonHp < 14:
 							RedMonster[j].Damaged = True
-						elif RedMonster[j].MonHp > 14:
+						elif RedMonster[j].MonHp > 14 or RedMonster[j].y <0:
 							del RedMonster[j]
 							RedMonster[j].Damaged = False
 						Bullet[i].Drawing = False
@@ -157,7 +161,7 @@ def update():
 	
 def draw():
 	global Count,i, BossNum
-	global Mob,BulltNum,YellowMonster,King,MapState,RedMonster
+	global Mob,BulltNum,YellowMonster,King,MapState,RedMonster,BossAttack
 	global Cloud
 	clear_canvas()
 	
@@ -218,14 +222,14 @@ def draw():
 	
 	#구름 그리기
 	Cloud.drawCloud(MapState)
-	
+	BossNum+=1
 	#보스총알
 	if MapState == Map1:
-		King[0].BossAttack(MapState)
+		King[0].BossAttack(MapState,User.x)
 	elif MapState == Map2:
-		King[1].BossAttack(MapState)
+		King[1].BossAttack(MapState,User.x)
 	elif MapState == Map3:
-		King[2].BossAttack(MapState)
+		King[2].BossAttack(MapState,User.x)
 	
 	update_canvas()
 	delay(0.05)

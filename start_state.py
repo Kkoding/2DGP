@@ -12,7 +12,7 @@ logo_time = 0.0
 
 def enter():
     global image
-    open_canvas()
+    open_canvas(600,800)
     image=load_image('kpu_credit.png')
     pass
 
@@ -38,7 +38,8 @@ def update():
 def draw():
     global image
     clear_canvas()
-    image.draw(400,300)
+    image.clip_draw(0, 0, 800, 1200, 300, 400, 600, 1200)
+   # image.draw(400,300)
     update_canvas()
     pass
 
