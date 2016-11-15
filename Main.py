@@ -219,7 +219,13 @@ def draw():
 	#구름 그리기
 	Cloud.drawCloud(MapState)
 	
-	Boss.BossAttack(MapState)
+	#보스총알
+	if MapState == Map1:
+		King[0].BossAttack(MapState)
+	elif MapState == Map2:
+		King[1].BossAttack(MapState)
+	elif MapState == Map3:
+		King[2].BossAttack(MapState)
 	
 	update_canvas()
 	delay(0.05)

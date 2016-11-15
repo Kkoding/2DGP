@@ -7,10 +7,14 @@ import Main
 
 import math
 
+from Obj_Player import*
+
+
 class Boss:
 	Map1, Map2, Map3 = 0, 1,2
 	Boss1, Boss2, Boss3 = 10,11,22
 	def __init__(self,select):
+		#Bullet = [Attack() for i in range(Bullet_Max)]
 		if select==0:
 			self.Boss=self.Boss1
 			self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
@@ -30,7 +34,7 @@ class Boss:
 		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
 		self.Boss_YPos = 3000
 		self.Boss_XPos = 300
-		self.BYPos = self.Boss_YPos
+		self.BYPos = 800
 		self.BXPos = self.Boss_XPos
 		self.SYPos = self.Boss_YPos
 		self.RYPos = self.Boss_YPos
@@ -41,13 +45,19 @@ class Boss:
 		self.BulletX=30
 		self.BulletY=700
 		
-		self.SlimeHp = 12
+		self.SlimeHp = 12*(select+1)
 		self.StoneHp = 12
 		
 		self.imagetimer=0
 		self.ChangeScene=0
 		self.ChangeScene2 = 0
 		self.Change2=False
+		
+		self.Patter1Y=1
+		self.Pattern2=-1
+		self.Pattern2Y=0
+		self.Pattern2X=10
+		self.Rope=1
 	def update(self,Map):
 		self.imagetimer+=1
 		if self.imagetimer % 2 == 0:
@@ -56,6 +66,22 @@ class Boss:
 		if Map == 0:
 			if self.BYPos > 680:
 				self.BYPos -= 10
+				self.Pattern2Y=self.BYPos
+			else:
+				self.Patter1Y-=25
+				if(self.Patter1Y<-1200):
+					self.Patter1Y=0
+					if(self.Rope <8):
+						self.Rope += 1
+				if(self.Pattern2 < 1000):
+					#구의 속도
+					self.Pattern2+=0.2
+					if self.Pattern2X<400:
+						self.Pattern2X+=5
+					
+					#if self.Pattern2Y<300:
+					self.Pattern2Y-=5
+					
 		elif Map == 1:
 			if self.SYPos>680:
 				self.SYPos-=10
@@ -136,14 +162,40 @@ class Boss:
 			self.SlimeHp-= damage
 		
 		
-	
+	#할튼 날라가버리기~
 	def Pattern1_Draw(self):
-		self.Boss_Bullet.clip_draw(0,0,52,52,200,300)
-		#math.sin()
-			
+		#6시방향
+		self.Boss_Bullet.clip_draw(0,0,52,52,self.BXPos,self.BYPos+self.Patter1Y*math.sin(math.pi/2))
+		#self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos- self.Patter1Y/2 * math.sin(math.pi / 2), self.BYPos+ self.Patter1Y/2 * math.sin(math.pi / 2) )
+		#7시
+		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos + self.Patter1Y/2 * math.sin(math.pi / 2), self.BYPos+self.Patter1Y*math.sin(math.pi/2))
+		#7.5시
+		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos + self.Patter1Y/4 * math.sin(math.pi / 2), self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
+		#5시
+		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos - self.Patter1Y/2 * math.sin(math.pi / 2), self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
+		#5.3시
+		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos - self.Patter1Y/4 * math.sin(math.pi / 2),self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
+		#5.35
+		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos - self.Patter1Y / 4 * math.sin(math.pi / 2), self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
+		
+	
+	#채찍
+	def Patter2_Draw(self):
+		for i in range(1,self.Rope):
+			self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos+80*i * math.cos(self.Pattern2), 600 +80*i * math.sin(self.Pattern2))
+		
+		# self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos+ 10*i* math.sin(math.pi / 2), self.BYPos-  10*i * math.sin(math.pi / 2)*i)
+		# self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos + 1 * math.cos(self.Pattern2), self.Pattern2Y + 1 * math.sin(self.Pattern2))
+		# self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos + self.Pattern2X * math.cos(self.Pattern2),self.Pattern2Y + 50 * math.sin(self.Pattern2))
+	
 	def BossAttack(self, num):
-		if (num == self.Boss1):
-			self.Pattern1_Draw()
+		if (num == self.Map1):
+			if self.BYPos < 689 and self.SlimeHp>0:
+				#self.Pattern1_Draw ()
+				self.Patter2_Draw()
+				
+	#	if(num == self.Map2):
+		
 			
 		
 	
