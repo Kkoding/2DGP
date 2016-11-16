@@ -6,6 +6,7 @@ from pico2d import *
 
 import game_framework
 import title_state
+import ready_state
 
 name = "Main"
 
@@ -46,6 +47,8 @@ YellowMonster=None
 RedMonster=None
 BossAttack=None
 BossNum=0
+gBGM=None
+
 def enter():
 	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster,BossAttack
 	open_canvas(600,800,sync=True)
@@ -60,10 +63,18 @@ def enter():
 	RedMonster = [Monster(i) for i in range(MobLimit)]
 	MapState=Map1
 	BossAttack=[Boss(i) for i in range(10)]
+
+	global gBGM
+	gBGM = load_music('logo_background.mp3')
+	gBGM.set_volume(64)
+	
 	
 def update():
 	global MapState, Stage, BulltNum, i,BossNum, King,BossAttack
-	global Cloud
+	global Cloud, BG_Sound,gBGM
+	
+	gBGM.repeat_play()
+	
 	Stage.update(MapState)
 	if MapState == Map1:
 		for i in range(MobLimit):
@@ -115,7 +126,7 @@ def update():
 							Mob[j].Damege(2)
 						if Mob[j].MonHp<14:
 							Mob[j].Damaged = True
-						elif Mob[j].MonHp>14 or Mob[j].y <0:
+						elif Mob[j].MonHp>14 or Mob[j].y < 0:
 							del Mob[j]
 							Mob[j].Damaged=False
 						Bullet[i].Drawing = False
@@ -245,6 +256,8 @@ def handle_events():
 	for event in events:
 		if event.type == SDL_QUIT:
 			game_framework.quit()
+		elif (event.key) == (SDLK_SPACE):
+			game_framework.change_state(ready_state)
 		else :
 			User.handle_event(event)
 			Stage.handle_event(event)

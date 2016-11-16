@@ -10,8 +10,13 @@ class Attack:
 		self.bY = 50
 		self.Drawing = False
 		self.YSpeed = 22
-	
+		
+	#	self.Shot_sound = load_wav('D:\\2-2\\2DGP\\Sound\\missile_show.wav')
+	#	self.Shot_sound.set_volume(64)
+	#	self.Shot_sound.repeat_play()
+		
 	def update(self,xPos):
+	#	self.Shot_sound.play()
 		if self.Drawing == False:
 			self.bX = xPos
 			self.bY = 50
@@ -23,6 +28,7 @@ class Attack:
 				self.bX = 100
 	
 	def draw(self):
+	
 		if self.Drawing == True:
 			self.b_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
 	

@@ -7,6 +7,9 @@ from Main import *
 class BackGround:
 	Map1, Map2, Map3 = 0,1,2
 	
+	
+	
+	
 	def __init__(self):
 		self.stage1 = load_image('D:\\2-2\\2DGP\\BackGround\\03.png')
 		self.stage2 = load_image('D:\\2-2\\2DGP\\BackGround\\07.png')
@@ -15,6 +18,9 @@ class BackGround:
 		self.Cloud2= load_image('D:\\2-2\\2DGP\\BackGround\\cloud_02.png')
 		self.Cloud3 = load_image('D:\\2-2\\2DGP\\BackGround\\cloud_03.png')
 		self.Cloudy = load_image('D:\\2-2\\2DGP\\BackGround\\Cloudy1.png')
+		
+		
+		
 		#self.Cloud
 		#self.Cloud2
 		#self.Black_Cloud
@@ -28,10 +34,17 @@ class BackGround:
 		self.Map2Timer=0
 		self.Mapping2=False
 		self.Mapping3=False
+		
+		BackGround.BGM = load_music('logo_background.mp3')
+		BackGround.BGM.set_volume(64)
+		BackGround.BGM.repeat_play()
+		
 	def update(self, Map):
+		#self.BGM.play()
+		
 		#if Stage == 0:
 		#if Stage ==1:
-		#	self.CloudY1 -= 20
+		#	self.CloudY1 -= 2
 		self.y1 -= 10
 		self.y2 -= 10
 		if (self.y1 == -800):

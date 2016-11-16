@@ -5,15 +5,14 @@ import Main
 
 name = "TitleState"
 image = None
-
+BG_Sound=None
 
 def enter():
-    global  image
+    global  image,BG_Sound
     open_canvas(600,800)
     image=load_image('D:\\2-2\\2DGP\\BackGround\\Title.png')
-
 def exit():
-    global image
+    global image,BG_Sound
     close_canvas()
     del(image)
    
@@ -31,6 +30,9 @@ def handle_events():
 
 
 def draw():
+    global BG_Sound
+    
+ 
     clear_canvas()
     image.clip_draw(0,0,384,512,300,400,600,800)
     #image.draw(192,256)
