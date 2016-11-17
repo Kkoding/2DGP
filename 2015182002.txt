@@ -1,0 +1,23 @@
+Wed Nov 16 09:52:54 2016 +0900 SoundOfGame
+Tue Nov 15 20:21:11 2016 +0900 BossPattern3
+Tue Nov 15 15:38:48 2016 +0900 BossAttack2
+Tue Nov 15 15:37:39 2016 +0900 BossAttack2
+Mon Nov 14 17:03:34 2016 +0900 Boss Attack
+Sun Nov 13 16:25:19 2016 +0900 test
+Thu Nov 10 20:51:25 2016 +0900 UI, UX, Be Attacked Pattern
+Wed Nov 9 20:22:43 2016 +0900 Lev3 Boss
+Tue Nov 8 10:55:59 2016 +0900 RedImage
+Mon Nov 7 21:47:37 2016 +0900 Map2
+Thu Nov 3 20:35:21 2016 +0900 Dragon
+Thu Nov 3 20:34:07 2016 +0900 Yellow Dragon
+Wed Nov 2 10:00:31 2016 +0900 Connect Cloudy
+Tue Nov 1 17:27:50 2016 +0900 Many of Unit, Change Scene
+Tue Nov 1 01:23:54 2016 +0900 Boss_Die
+Mon Oct 31 19:11:54 2016 +0900 Collision with Hp, Bullet
+Mon Oct 31 17:14:25 2016 +0900 충돌
+Fri Oct 28 14:43:04 2016 +0900 Making Boss, Collision
+Tue Oct 25 15:08:47 2016 +0900 파일분할
+Thu Oct 20 16:20:18 2016 +0900 이미지
+Thu Oct 20 16:03:15 2016 +0900 Imgae
+Thu Oct 20 15:41:13 2016 +0900 image
+Tue Oct 18 17:01:58 2016 +0900 2D
