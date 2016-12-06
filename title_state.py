@@ -1,4 +1,5 @@
 import game_framework
+import select_state
 
 from pico2d import *
 import Main
@@ -6,6 +7,8 @@ import Main
 name = "TitleState"
 image = None
 BG_Sound=None
+
+
 
 def enter():
     global  image,BG_Sound
@@ -25,7 +28,7 @@ def handle_events():
             if(event.type,event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif(event.type,event.key) == (SDL_KEYDOWN,SDLK_SPACE):
-                game_framework.change_state(Main)
+                game_framework.change_state(select_state)
     pass
 
 
