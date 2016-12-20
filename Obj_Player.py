@@ -8,12 +8,20 @@ from Obj_Bullet import *
 Raby, Sunny = 0, 1
 
 class Player:
-	PIXEL_PER_METER = (10.0/0.3) #10 pixel 30cm
-	RUN_SPEED_KMPH = 20.0
-	RUN_SPEED=
+	PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
+	RUN_SPEED_KMPH = 80.0  # Km / Hour
+	RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
+	RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
+	RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
+	
+	TIME_PER_ACTION = 0.5
+	ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
+	FRAMES_PER_ACTION = 8
+	
 	Move_Stop,Move_Left, Move_Right = 0,1,2
 	Lev1, Lev2, Lev3 = 0, 1, 2
 	Rev1, Rev2, Rev3 = 0, 1, 2
+	
 	damage = 1
 	GM = None
 	L_Hatch=False
@@ -28,7 +36,9 @@ class Player:
 		self.y = 50
 		self.state=self.Move_Stop
 		self.speed = 10
-		
+		self.bgm = load_music('logo_background.mp3')
+		self.bgm.set_volume(64)
+		self.bgm.play(1)
 		
 	def update(self):
 		self.frame = (self.frame + 1) % 4

@@ -15,12 +15,13 @@ name = "ready_state"
 image = None
 logo_time = 0.0
 
+Sound_Button = None
 
 BGM = None
 shop_bgm = None
 
 def enter():
-    global image,BGM,shop_bgm
+    global image,BGM,shop_bgm,Sound_Button
     open_canvas(600,800)
     image=load_image('shop_3.png')
 

@@ -20,7 +20,10 @@ def enter():
 	global image, BG_Sound
 	open_canvas(600, 800)
 	image = load_image('D:\\2-2\\2DGP\\BackGround\\selected1.png')
-
+	global BG_Sound
+	BG_Sound = load_music('logo_background.mp3')
+	BG_Sound.set_volume(64)
+	BG_Sound.repeat_play()
 
 def exit():
 	global image, BG_Sound
