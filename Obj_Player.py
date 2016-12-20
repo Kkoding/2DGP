@@ -7,6 +7,7 @@ from Obj_Bullet import *
 
 class Player:
 	Move_Stop,Move_Left, Move_Right = 0,1,2
+	damage = 1
 	
 	def __init__(self):
 		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
@@ -16,7 +17,7 @@ class Player:
 		self.y = 50
 		self.state=self.Move_Stop
 		self.speed = 10
-		self.damage=1
+		
 		
 	def update(self):
 		self.frame = (self.frame + 1) % 4
@@ -59,8 +60,8 @@ class Player:
 	def get_bb(self):
 		return self.x-10, self.y-10,self.x+10,self.y+30
 	
-	def Bullet(self):
-		Attack
+	def Bullet(none):
+		Player.damage +=1
 		
 
 			

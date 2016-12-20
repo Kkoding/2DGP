@@ -3,8 +3,13 @@ import title_state
 import Main
 
 from pico2d import *
-from tkinter import *
 
+from BackGround import *
+from Obj_Monster import *
+from Obj_Player import *
+from Obj_Bullet import *
+from Obj_Boss import *
+from Collision import *
 
 name = "ready_state"
 image = None
@@ -12,11 +17,10 @@ logo_time = 0.0
 
 
 BGM = None
-
+shop_bgm = None
 
 def enter():
-    global image,BGM
-    
+    global image,BGM,shop_bgm
     open_canvas(600,800)
     image=load_image('shop_2.png')
 
@@ -40,6 +44,7 @@ def draw():
     pass
 
 def handle_events():
+    global shop_bgm
     events=get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -49,12 +54,15 @@ def handle_events():
                 print ( event.x,800-event.y)
                 if(event.x> 16 and event.x< 88 and 800-event.y>39 and 800-event.y < 89):
                     game_framework.change_state(Main)
+                if (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
+                    print("OKEY")
+                    Player.Bullet(None)
         else:
-            if(event.type,event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
+            if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
-            elif(event.type,event.key) == (SDL_KEYDOWN,SDLK_SPACE):
+            elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
                 game_framework.change_state(Main)
-            
+
     pass
 
 
