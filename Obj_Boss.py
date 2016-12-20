@@ -42,8 +42,8 @@ class Boss:
 		self.BulletX=30
 		self.BulletY=700
 		
-		self.SlimeHp = 12*(select+1)
-		self.StoneHp = 12
+		self.SlimeHp = 24*((select+1)*2)
+		self.StoneHp = 24
 		
 		self.imagetimer=0
 		self.ChangeScene=0

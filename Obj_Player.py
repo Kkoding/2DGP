@@ -8,13 +8,16 @@ from Obj_Bullet import *
 Raby, Sunny = 0, 1
 
 class Player:
+	PIXEL_PER_METER = (10.0/0.3) #10 pixel 30cm
+	RUN_SPEED_KMPH = 20.0
+	RUN_SPEED=
 	Move_Stop,Move_Left, Move_Right = 0,1,2
 	Lev1, Lev2, Lev3 = 0, 1, 2
 	Rev1, Rev2, Rev3 = 0, 1, 2
 	damage = 1
 	GM = None
-	L_Hatch=True
-	R_Hatch=True
+	L_Hatch=False
+	R_Hatch=False
 	def __init__(self):
 		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
 		self.Sunny = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')

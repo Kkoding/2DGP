@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="04d099dd-1472-40f8-b248-23d7a32de474" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Obj_Bullet.py" afterPath="$PROJECT_DIR$/Obj_Bullet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Obj_Boss.py" afterPath="$PROJECT_DIR$/Obj_Boss.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Obj_Player.py" afterPath="$PROJECT_DIR$/Obj_Player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ready_state.py" afterPath="$PROJECT_DIR$/ready_state.py" />
     </list>
     <ignored path="0FlightResource.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,20 +38,8 @@
       <file leaf-file-name="ready_state.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ready_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="select_state.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select_state.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state relative-caret-position="247">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -77,17 +67,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="221" column="45" selection-start-line="221" selection-start-column="45" selection-end-line="221" selection-end-column="45" />
+            <state relative-caret-position="403">
+              <caret line="422" column="29" selection-start-line="422" selection-start-column="29" selection-end-line="422" selection-end-column="29" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#3341#3967#0" expanded="false" />
-                <element signature="e#6738#6762#0" expanded="false" />
-                <marker date="1482239854000" expanded="false" signature="3990:4624" ph="..." />
+                <element signature="e#3349#3975#0" expanded="false" />
+                <element signature="e#5374#6038#0" expanded="false" />
+                <element signature="e#8824#8848#0" expanded="false" />
+                <marker date="1482243722000" expanded="false" signature="3998:4632" ph="..." />
+                <marker date="1482243722000" expanded="false" signature="6061:6726" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Obj_Boss.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Obj_Boss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Obj_Player.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Obj_Player.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Obj_Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
+            <state relative-caret-position="228">
+              <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding>
                 <element signature="e#1#14#0" expanded="true" />
               </folding>
@@ -127,8 +129,8 @@
       <file leaf-file-name="Obj_Bullet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Obj_Bullet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
+            <state relative-caret-position="198">
+              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#1666#1992#0" expanded="false" />
@@ -158,7 +160,6 @@
         <option value="$PROJECT_DIR$/Obj_Monster.py" />
         <option value="$PROJECT_DIR$/Obj_Obstacle.py" />
         <option value="$PROJECT_DIR$/character_state.py" />
-        <option value="$PROJECT_DIR$/Obj_Boss.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pico2d.py" />
         <option value="$PROJECT_DIR$/start_state.py" />
         <option value="$PROJECT_DIR$/BackGround.py" />
@@ -166,15 +167,16 @@
         <option value="$PROJECT_DIR$/title_state.py" />
         <option value="$PROJECT_DIR$/mygame.py" />
         <option value="$PROJECT_DIR$/select_state.py" />
-        <option value="$PROJECT_DIR$/ready_state.py" />
-        <option value="$PROJECT_DIR$/Obj_Player.py" />
         <option value="$PROJECT_DIR$/Obj_Bullet.py" />
+        <option value="$PROJECT_DIR$/ready_state.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Obj_Boss.py" />
+        <option value="$PROJECT_DIR$/Obj_Player.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="630" />
+    <option name="x" value="743" />
     <option name="width" value="1155" />
     <option name="height" value="1040" />
   </component>
@@ -492,7 +494,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="630" y="0" width="1155" height="1040" extended-state="0" />
+    <frame x="743" y="0" width="1155" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17471465" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -555,9 +557,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#3341#3967#0" expanded="false" />
-            <element signature="e#6738#6762#0" expanded="false" />
-            <marker date="1482239854000" expanded="false" signature="3990:4624" ph="..." />
+            <element signature="e#3349#3975#0" expanded="false" />
+            <element signature="e#5374#6038#0" expanded="false" />
+            <element signature="e#8824#8848#0" expanded="false" />
+            <marker date="1482243722000" expanded="false" signature="3998:4632" ph="..." />
+            <marker date="1482243722000" expanded="false" signature="6061:6726" ph="..." />
           </folding>
         </state>
       </provider>
@@ -568,9 +572,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#3341#3967#0" expanded="false" />
-            <element signature="e#6738#6762#0" expanded="false" />
-            <marker date="1482239854000" expanded="false" signature="3990:4624" ph="..." />
+            <element signature="e#3349#3975#0" expanded="false" />
+            <element signature="e#5374#6038#0" expanded="false" />
+            <element signature="e#8824#8848#0" expanded="false" />
+            <marker date="1482243722000" expanded="false" signature="3998:4632" ph="..." />
+            <marker date="1482243722000" expanded="false" signature="6061:6726" ph="..." />
           </folding>
         </state>
       </provider>
@@ -581,9 +587,11 @@
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#3341#3967#0" expanded="false" />
-            <element signature="e#6738#6762#0" expanded="false" />
-            <marker date="1482239854000" expanded="false" signature="3990:4624" ph="..." />
+            <element signature="e#3349#3975#0" expanded="false" />
+            <element signature="e#5374#6038#0" expanded="false" />
+            <element signature="e#8824#8848#0" expanded="false" />
+            <marker date="1482243722000" expanded="false" signature="3998:4632" ph="..." />
+            <marker date="1482243722000" expanded="false" signature="6061:6726" ph="..." />
           </folding>
         </state>
       </provider>
@@ -740,14 +748,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Obj_Boss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="229" column="36" selection-start-line="229" selection-start-column="36" selection-end-line="229" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-912">
@@ -820,42 +820,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ready_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Obj_Player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="72" column="8" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="8" />
-          <folding>
-            <element signature="e#1#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game_framework.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="614">
           <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Obj_Bullet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="692">
-          <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-            <element signature="e#1666#1992#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,15 +844,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ready_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Obj_Bullet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#1666#1992#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="221" column="45" selection-start-line="221" selection-start-column="45" selection-end-line="221" selection-end-column="45" />
+        <state relative-caret-position="403">
+          <caret line="422" column="29" selection-start-line="422" selection-start-column="29" selection-end-line="422" selection-end-column="29" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#3341#3967#0" expanded="false" />
-            <element signature="e#6738#6762#0" expanded="false" />
-            <marker date="1482239854000" expanded="false" signature="3990:4624" ph="..." />
+            <element signature="e#3349#3975#0" expanded="false" />
+            <element signature="e#5374#6038#0" expanded="false" />
+            <element signature="e#8824#8848#0" expanded="false" />
+            <marker date="1482243722000" expanded="false" signature="3998:4632" ph="..." />
+            <marker date="1482243722000" expanded="false" signature="6061:6726" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Obj_Boss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Obj_Player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="e#1#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -22,7 +22,7 @@ shop_bgm = None
 def enter():
     global image,BGM,shop_bgm
     open_canvas(600,800)
-    image=load_image('shop_2.png')
+    image=load_image('shop_3.png')
 
 
 def exit():

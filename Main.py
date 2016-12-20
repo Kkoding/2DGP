@@ -21,7 +21,9 @@ Map1, Map2, Map3 = 0,1,2
 Count=0
 BulltNum=0
 S_BulletNum=0
-Bullet_Max=30
+S_BulletNum2=0
+
+Bullet_Max=22
 Stage = None
 Bullet = None
 Mob = None
@@ -53,7 +55,7 @@ gBGM=None
 
 def enter():
 	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster,BossAttack
-	global SubBullet
+	global SubBullet,SubBullet2
 	open_canvas(600,800,sync=True)
 	
 	Bullet = [Attack() for i in range(Bullet_Max)]
@@ -125,9 +127,8 @@ def update():
 	for Shot in SubBullet:
 		Shot.Sub_Update(User.x)
 		
-	#for Shot in SubBullet2:
-	#
-	# 	Shot.Sub_Update(User.x,Player.L_Hatch)
+	for Shot in SubBullet2:
+	 	Shot.Sub_Update2(User.x)
 		
 	#for Obj_Bullet in SubBullet:
 	#	Obj_Bullet.updatebb()
@@ -217,7 +218,6 @@ def update():
 						King[0].FlagBossHp=True
 						King[0].getHp(User.damage,MapState)
 						Obj_Bullet.Drawing = False
-					
 		if MapState == Map2:
 			for Obj_Monster in YellowMonster:
 				if Obj_Bullet.Drawing == True:
@@ -237,7 +237,6 @@ def update():
 						King[1].FlagBossHp = True
 						King[1].getHp(User.damage, MapState)
 						Obj_Bullet.Drawing = False
-					
 		if MapState == Map3:
 			for Obj_Monster in RedMonster:
 				if Obj_Bullet.Drawing == True:
@@ -257,7 +256,68 @@ def update():
 						King[2].FlagBossHp = True
 						King[2].getHp(User.damage, MapState)
 						Obj_Bullet.Drawing = False
-					
+	
+	for Obj_Bullet in SubBullet2:
+		if MapState == Map1:
+			for Obj_Monster in Mob:
+				if Obj_Bullet.Drawing == True:
+					if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp<14:
+						Obj_Bullet.Drawing = False
+						#들어가는 데미지
+						if Obj_Monster.Damaged==True:
+							Obj_Monster.Damege(1)
+						if Obj_Monster.MonHp<14:
+							Obj_Monster.Damaged = True
+							if Obj_Monster.MonHp>=14 or Obj_Monster.y < 0:
+								#Obj_Monster.y = -20
+								Obj_Monster.Damaged = False
+								Obj_Bullet.Drawing = False
+								del Obj_Monster
+					elif Obj_Bullet.Lcollide(King[0]) == True:
+						King[0].FlagBossHp=True
+						King[0].getHp(User.damage,MapState)
+						Obj_Bullet.Drawing = False
+		if MapState == Map2:
+			for Obj_Monster in YellowMonster:
+				if Obj_Bullet.Drawing == True:
+					if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp<14:
+						Obj_Bullet.Drawing = False
+						# 들어가는 데미지
+						if Obj_Monster.Damaged == True:
+							Obj_Monster.Damege(1)
+						if Obj_Monster.MonHp < 14:
+							Obj_Monster.Damaged = True
+							if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
+								# Obj_Monster.y = -20
+								Obj_Monster.Damaged = False
+								Obj_Bullet.Drawing = False
+								del Obj_Monster
+					elif Obj_Bullet.Lcollide(King[1]) == True:
+						King[1].FlagBossHp = True
+						King[1].getHp(User.damage, MapState)
+						Obj_Bullet.Drawing = False
+		if MapState == Map3:
+			for Obj_Monster in RedMonster:
+				if Obj_Bullet.Drawing == True:
+					if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp<14:
+						Obj_Bullet.Drawing = False
+						# 들어가는 데미지
+						if Obj_Monster.Damaged == True:
+							Obj_Monster.Damege(1)
+						if Obj_Monster.MonHp < 14:
+							Obj_Monster.Damaged = True
+							if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
+								# Obj_Monster.y = -20
+								Obj_Monster.Damaged = False
+								Obj_Bullet.Drawing = False
+								del Obj_Monster
+					elif Obj_Bullet.Lcollide(King[2]) == True:
+						King[2].FlagBossHp = True
+						King[2].getHp(User.damage, MapState)
+						Obj_Bullet.Drawing = False
+		
+	
+								
 	#for Obj_Monster in Mob:
 	#	if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
 	#		Obj_Monster.Damaged = False
@@ -279,7 +339,7 @@ def update():
 	Cloud.update(MapState)
 	
 def draw():
-	global Count,i, BossNum,S_BulletNum
+	global Count,i, BossNum,S_BulletNum,S_BulletNum2
 	global Mob,BulltNum,YellowMonster,King,MapState,RedMonster,BossAttack
 	global Cloud,SubBullet,SubBullet2
 	clear_canvas()
@@ -315,8 +375,8 @@ def draw():
 	for Obj_Bullet in SubBullet:
 		Obj_Bullet.RSub_draw(Player.R_Hatch)
 		
-#	for Obj_Bullet in SubBullet2:
-#		Obj_Bullet.LSub_draw(Player.L_Hatch)
+	for Obj_Bullet in SubBullet2:
+		Obj_Bullet.LSub_draw(Player.L_Hatch)
 	
 	#Colli-Sub
 	#for Obj_Bullet in SubBullet:
@@ -352,13 +412,20 @@ def draw():
 			BulltNum += 1
 		if BulltNum > Bullet_Max - 1:
 			BulltNum = 0
+			
 		#########Sub
 		if SubBullet[S_BulletNum].Drawing == False:
 			SubBullet[S_BulletNum].Drawing = True
 			S_BulletNum += 1
+			
+		if SubBullet2[S_BulletNum].Drawing == False:
+			SubBullet2[S_BulletNum].Drawing = True
+			S_BulletNum2 += 1
+		
 		if S_BulletNum > Bullet_Max - 5:
 			S_BulletNum = 0
-			
+		if S_BulletNum2 > Bullet_Max - 5:
+			S_BulletNum2 = 0
 			
 			
 	
@@ -396,6 +463,8 @@ def exit():
 	for Obj_Bullet in SubBullet:
 		del Obj_Bullet
 	
+	for Obj_Bullet in SubBullet2:
+		del Obj_Bullet
 	close_canvas()
 	
 	
