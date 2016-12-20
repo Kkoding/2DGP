@@ -1,5 +1,6 @@
 import game_framework
 import title_state
+import Main
 
 from pico2d import *
 
@@ -36,8 +37,8 @@ def draw():
     global image
     clear_canvas()
     image.clip_draw(0, 0, 550, 643, 300, 400, 600, 800)
-   # image.draw(400,300)
-    update_canvas()
+    image.draw(400,300)
+    #update_canvas()
     pass
 
 
