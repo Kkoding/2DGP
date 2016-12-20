@@ -23,7 +23,7 @@ class Attack:
 		self.bX =100
 		self.bY = 50
 		self.Y2=50
-		
+		self.Y3=50
 		self.Drawing = False
 		self.SDrawing = False
 		self.YSpeed = 22
@@ -67,28 +67,39 @@ class Attack:
 					self.r3_image.clip_draw(0, 0, 129, 125, self.bX, self.bY)
 	
 	def Sub_Update(self,xPos):
+			if self.Drawing == False:
+				self.bX = xPos
+				self.Y2 = 50
+			if self.Drawing == True:
+				self.Y2 += self.YSpeed
+				if self.Y2 > 800:
+					self.Drawing = False
+					self.Y2 = 50
+					self.bX = 100
+	
+	def Sub_Update2(self,xPos):
 		if self.Drawing == False:
 			self.bX = xPos
-			self.Y2 = 50
+			self.Y3 = 50
 		if self.Drawing == True:
-			self.Y2 += self.YSpeed
-			if self.Y2 > 800:
+			self.Y3 += self.YSpeed
+			if self.Y3 > 800:
 				self.Drawing = False
-				self.Y2 = 50
+				self.Y3 = 50
 				self.bX = 100
 				
 		
-	def Sub_draw(self,LB,RB):
-		if LB == True:
-			if self.Drawing == True:
-				self.LD.clip_draw(0, 0, 64, 64, self.bX - 64, self.Y2 + 32)
-				self.LSub_draw_bb()
+	def RSub_draw(self,RB):
 		if RB == True:
 			if self.Drawing == True:
 				self.RD.clip_draw(0, 0, 64, 64, self.bX + 64, self.Y2 + 32)
 				self.RSub_draw_bb()
 		
-	
+	def LSub_draw(self,LB):
+		if LB == True:
+			if self.Drawing == True:
+				self.LD.clip_draw(0, 0, 64, 64, self.bX - 64, self.Y3 + 32)
+				self.LSub_draw_bb()
 	
 	def collide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -130,6 +141,27 @@ class Attack:
 	def get_bb(self):
 		return self.bX -10, self.bY-10,self.bX +10,self.bY+20
 	
+	def Rcollide(self, a):
+		left_a, bottom_a, right_a, top_a = a.get_bb()
+		left_b, bottom_b, right_b, top_b = self.RSub_get_bb()
+		
+		if left_a > right_b: return False
+		if right_a < left_b: return False
+		if top_a < bottom_b: return False
+		if bottom_a > top_b: return False
+		
+		return True
+	
+	def Lcollide(self, a):
+		left_a, bottom_a, right_a, top_a = a.get_bb()
+		left_b, bottom_b, right_b, top_b = self.LSub_get_bb()
+		
+		if left_a > right_b: return False
+		if right_a < left_b: return False
+		if top_a < bottom_b: return False
+		if bottom_a > top_b: return False
+		
+		return True
 	def LSub_draw_bb(self):
 		if self.Drawing == True:
 			draw_rectangle(*self.LSub_get_bb())
@@ -142,7 +174,7 @@ class Attack:
 		return self.bX +55, self.Y2+20,self.bX +75,self.Y2+40
 	
 	def LSub_get_bb(self):
-		return self.bX -75, self.Y2+20,self.bX -55,self.Y2+40
+		return self.bX -75, self.Y3+20,self.bX -55,self.Y3+40
 
 	
 	
