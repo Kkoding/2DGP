@@ -59,7 +59,13 @@ class Attack:
 			if damage == 3:
 				if self.Drawing == True:
 					self.r3_image.clip_draw(0, 0, 129, 125, self.bX, self.bY)
-			
+	
+	def Sub_draw(self,LB,RB):
+		if Player.LD == True:
+		
+		if Player.RD == True:
+	
+	
 	def collide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
 		left_b, bottom_b, right_b, top_b = self.get_bb()

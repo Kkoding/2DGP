@@ -18,7 +18,8 @@ class Player:
 	def __init__(self):
 		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
 		self.Sunny = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')
-		self.LD = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')
+		self.LD = load_image('D:\\2-2\\2DGP\\Player\\LD.png')
+		self.RD = load_image('D:\\2-2\\2DGP\\Player\\RD.png')
 		self.frame = 0
 		self.x=100
 		self.y = 50
@@ -39,11 +40,15 @@ class Player:
 	def draw(self):
 		if Player.GM == Raby:
 			self.p_image.clip_draw(self.SunnyFrame * 170, 0, 170, 130, self.x, 50)
-		if Player.GM == Sunny:
+		elif Player.GM == Sunny:
 			self.Sunny.clip_draw(self.frame * 128, 0, 128, 130, self.x, 50)
 			
+		#if Player.L_Hatch == True:
 		if Player.L_Hatch == True:
+			self.LD.clip_draw(self.frame * 64, 0, 64, 64, self.x - 64, 50)
 			
+		if Player.R_Hatch == True:
+			self.RD.clip_draw(self.frame * 64, 0, 64, 64, self.x + 64, 50)
 	
 	def handle_event(self,event):
 		if (event.type, event.key) == (SDL_KEYDOWN, SDLK_LEFT):

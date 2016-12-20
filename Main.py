@@ -136,11 +136,11 @@ def update():
 						King[0].FlagBossHp=True
 						King[0].getHp(User.damage,MapState)
 						Obj_Bullet.Drawing = False
-						
 		if MapState == Map2:
 			for Obj_Monster in YellowMonster:
 				if Obj_Bullet.Drawing == True:
 					if Obj_Bullet.collide(Obj_Monster) == True:
+						Obj_Bullet.Drawing = False
 						if Obj_Monster.Damaged==True:
 							Obj_Monster.Damege(Player.damage)
 						if Obj_Monster.MonHp<14:
@@ -159,6 +159,7 @@ def update():
 			for Obj_Monster in RedMonster:
 				if Obj_Bullet.Drawing == True:
 					if Obj_Bullet.collide(Obj_Monster) == True:
+						Obj_Bullet.Drawing = False
 						if Obj_Monster.Damaged == True:
 							Obj_Monster.Damege(Player.damage)
 						if Obj_Monster.MonHp < 14:
@@ -190,14 +191,14 @@ def draw():
 	Stage.draw2()
 	#몬스터
 	if MapState == Map1:
-		for Obj_Monster in Mob:
-			Obj_Monster.draw(MapState)
+		for i in range(MobLimit):
+			Mob[i].draw(MapState)
 	elif MapState == Map2:
-		for YellowMonster in Mob:
-			YellowMonster.draw(MapState)
+		for i in range(MobLimit):
+			YellowMonster[i].draw(MapState)
 	elif MapState == Map3:
-		for RedMonster in Mob:
-			RedMonster.draw(MapState)
+		for i in range(MobLimit):
+			RedMonster[i].draw(MapState)
 		 
 	User.draw()
 	if MapState == Map1:
@@ -216,14 +217,14 @@ def draw():
 	Player.draw_bb(User)
 	if MapState == Map1:
 		for Obj_Monster in Mob:
-			if Obj_Monster.MonHp < 14 or Obj_Monster.y > 0:
+			if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 				Obj_Monster.draw_bb()
 	elif MapState == Map2:
-		for YellowMonster in Mob:
-			YellowMonster.draw_bb()
+		for i in range(MobLimit):
+			YellowMonster[i].draw_bb()
 	elif MapState == Map3:
-		for RedMonster in Mob:
-			RedMonster.draw_bb()
+		for i in range(MobLimit):
+			RedMonster[i].draw_bb()
 	
 	if MapState == Map1:
 		Boss.draw_bb(King[0])
@@ -244,7 +245,6 @@ def draw():
 	#구름 그리기
 	Cloud.drawCloud(MapState)
 	BossNum+=1
-	
 	#보스총알
 	if MapState == Map1:
 		King[0].BossAttack(MapState,User.x)
@@ -257,8 +257,22 @@ def draw():
 	delay(0.05)
 
 def exit():
-	global Mob, BulltNum, YellowMonster, King, MapState, RedMonster, BossAttack,MobLimit
+	global Mob, BulltNum, YellowMonster, King, MapState, RedMonster, BossAttack,MobLimit,User
 	global Cloud
+	
+	del User
+	for Obj_Monster in Mob:
+		del Obj_Monster
+	for Obj_Monster in RedMonster:
+		del Obj_Monster
+	for Obj_Monster in YellowMonster:
+		del Obj_Monster
+		
+	for Obj_Bullet in Bullet:
+		del Obj_Bullet
+
+	
+	
 	close_canvas()
 	
 	
