@@ -5,13 +5,20 @@ from game_framework import *
 from pico2d import *
 from Obj_Bullet import *
 
+Raby, Sunny = 0, 1
+
 class Player:
 	Move_Stop,Move_Left, Move_Right = 0,1,2
+	Lev1, Lev2, Lev3 = 0, 1, 2
+	Rev1, Rev2, Rev3 = 0, 1, 2
 	damage = 1
-	
+	GM = None
+	L_Hatch=None
+	R_Hatch=None
 	def __init__(self):
 		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
 		self.Sunny = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')
+		self.LD = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')
 		self.frame = 0
 		self.x=100
 		self.y = 50
@@ -30,9 +37,13 @@ class Player:
 			self.x = max(0, self.x -self.speed)
 	
 	def draw(self):
-		
-		self.p_image.clip_draw(self.SunnyFrame * 170, 0, 170, 130, self.x, 50)
-		#self.Sunny.clip_draw(self.frame * 128, 0, 128, 130, x, 50)
+		if Player.GM == Raby:
+			self.p_image.clip_draw(self.SunnyFrame * 170, 0, 170, 130, self.x, 50)
+		if Player.GM == Sunny:
+			self.Sunny.clip_draw(self.frame * 128, 0, 128, 130, self.x, 50)
+			
+		if Player.L_Hatch == True:
+			
 	
 	def handle_event(self,event):
 		if (event.type, event.key) == (SDL_KEYDOWN, SDLK_LEFT):
@@ -61,7 +72,8 @@ class Player:
 		return self.x-10, self.y-10,self.x+10,self.y+30
 	
 	def Bullet(none):
-		Player.damage +=1
+		if Player.damage<3:
+			Player.damage +=1
 		
 
 			

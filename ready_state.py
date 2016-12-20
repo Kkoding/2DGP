@@ -55,7 +55,7 @@ def handle_events():
                 if(event.x> 16 and event.x< 88 and 800-event.y>39 and 800-event.y < 89):
                     game_framework.change_state(Main)
                 if (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
-                    print("OKEY")
+                    #print("OKEY")
                     Player.Bullet(None)
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):

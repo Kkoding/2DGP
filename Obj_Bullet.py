@@ -4,8 +4,19 @@ from Collision import*
 import Main
 
 class Attack:
+	
+	Lev1, Lev2, Lev3 = 0, 1, 2
+	Rev1, Rev2, Rev3 = 0, 1, 2
+	
 	def __init__(self):
-		self.b_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny.png')
+		self.b1_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny.png')
+		self.b2_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny_two.png')
+		self.b3_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny_three.png')
+		
+		self.r1_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby.png')
+		self.r2_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_two.png')
+		self.r3_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_three.png')
+		
 		self.bX =100
 		self.bY = 50
 		self.Drawing = False
@@ -27,11 +38,28 @@ class Attack:
 				self.bY = 50
 				self.bX = 100
 	
-	def draw(self):
-	
-		if self.Drawing == True:
-			self.b_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
-	
+	def draw(self,damage,character):
+		if(character == 0):
+			if damage == 1:
+				if self.Drawing == True:
+					self.b1_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
+			if damage == 2:
+				if self.Drawing == True:
+					self.b2_image.clip_draw(0, 0, 129, 129, self.bX, self.bY)
+			if damage == 3:
+				if self.Drawing == True:
+					self.b3_image.clip_draw(0, 0, 128, 128, self.bX, self.bY)
+		else:
+			if damage == 1:
+				if self.Drawing == True:
+					self.r1_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
+			if damage == 2:
+				if self.Drawing == True:
+					self.r2_image.clip_draw(0, 0, 101, 93, self.bX, self.bY)
+			if damage == 3:
+				if self.Drawing == True:
+					self.r3_image.clip_draw(0, 0, 129, 125, self.bX, self.bY)
+			
 	def collide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
 		left_b, bottom_b, right_b, top_b = self.get_bb()

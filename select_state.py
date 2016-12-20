@@ -4,11 +4,18 @@ import select_state
 from pico2d import *
 import Main
 
+from BackGround import *
+from Obj_Monster import *
+from Obj_Player import *
+from Obj_Bullet import *
+from Obj_Boss import *
+from Collision import *
+
 name = "SelectState"
 image = None
 BG_Sound = None
 
-
+Raby, Sunny = 0, 1
 def enter():
 	global image, BG_Sound
 	open_canvas(600, 800)
@@ -33,8 +40,10 @@ def handle_events():
 				game_framework.change_state(select_state)
 			elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_1):
 				game_framework.change_state(Main)
+				Player.GM = Raby
 			elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_2):
 				game_framework.change_state(Main)
+				Player.GM = Sunny
 	pass
 
 
