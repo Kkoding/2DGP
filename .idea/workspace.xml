@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04d099dd-1472-40f8-b248-23d7a32de474" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Obj_Bullet.py" afterPath="$PROJECT_DIR$/Obj_Bullet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Obj_Player.py" afterPath="$PROJECT_DIR$/Obj_Player.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ready_state.py" afterPath="$PROJECT_DIR$/ready_state.py" />
     </list>
     <ignored path="0FlightResource.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -127,8 +123,8 @@
       <file leaf-file-name="Obj_Bullet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Obj_Bullet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state relative-caret-position="266">
+              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -173,7 +169,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="319" />
+    <option name="x" value="416" />
     <option name="width" value="1056" />
     <option name="height" value="1040" />
   </component>
@@ -491,7 +487,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="319" y="0" width="1056" height="1040" extended-state="0" />
+    <frame x="416" y="0" width="1056" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19134615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -866,8 +862,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Obj_Bullet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state relative-caret-position="266">
+          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

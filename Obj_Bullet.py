@@ -17,6 +17,9 @@ class Attack:
 		self.r2_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_two.png')
 		self.r3_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_three.png')
 		
+		self.LD = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_three.png')
+		self.RD = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_three.png')
+		
 		self.bX =100
 		self.bY = 50
 		self.Drawing = False
@@ -62,7 +65,7 @@ class Attack:
 	
 	def Sub_draw(self,LB,RB):
 		if Player.LD == True:
-		
+			
 		if Player.RD == True:
 	
 	
