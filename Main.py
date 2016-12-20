@@ -20,6 +20,7 @@ Map1, Map2, Map3 = 0,1,2
 
 Count=0
 BulltNum=0
+S_BulletNum=0
 Bullet_Max=30
 Stage = None
 Bullet = None
@@ -35,6 +36,7 @@ BossNum = 0
 MobLimit=12
 
 YellowMonster=None
+SubBullet = None
 
 #추가할 것들.
 #   Red몹
@@ -51,8 +53,12 @@ gBGM=None
 
 def enter():
 	global Stage, Bullet, Mob, User,King, BossShot, Cloud, YellowMonster,MapState,RedMonster,BossAttack
+	global SubBullet
 	open_canvas(600,800,sync=True)
+	
 	Bullet = [Attack() for i in range(Bullet_Max)]
+	SubBullet = [Attack() for i in range(Bullet_Max)]
+	
 	Stage = BackGround()
 	##BossShot = [Boss() for i in range(30)]
 	Mob = [Monster(i) for i in range(MobLimit)]
@@ -71,10 +77,11 @@ def enter():
 	
 def update():
 	global MapState, Stage, BulltNum, i,BossNum, King,BossAttack
-	global Cloud, BG_Sound,gBGM
+	global Cloud, BG_Sound,gBGM,SubBullet
 	
 	gBGM.repeat_play()
 	
+	#stage
 	Stage.update(MapState)
 	if MapState == Map1:
 		for Obj_Monster in Mob:
@@ -85,9 +92,11 @@ def update():
 	elif MapState == Map3:
 		for i in range(MobLimit):
 			RedMonster[i].update(MapState)
-			
+
+	#Player
 	User.update()
 		
+	#Kings
 	if MapState == Map1:
 		King[0].update(MapState)
 	elif MapState == Map2:
@@ -98,6 +107,7 @@ def update():
 	elif MapState == Map3:
 		King[2].update(MapState)
 	
+
 	
 	#보스체크:
 	if King[0].Change2==False:
@@ -111,9 +121,17 @@ def update():
 	#맵 선택체크
 	Stage.MapLevel(MapState)
 	
+	#SubAttack
+	for Shot in SubBullet:
+		Shot.Sub_Update(User.x)
+	#for Obj_Bullet in SubBullet:
+	#	Obj_Bullet.update(User.x)
+		
 	#총알충돌체크
 	for Shot in Bullet:
 		Shot.update(User.x)
+		
+	
 		
 	#총알과 몬스터`s
 	for Obj_Bullet in Bullet:
@@ -154,7 +172,6 @@ def update():
 						King[1].FlagBossHp = True
 						King[1].getHp(User.damage, MapState)
 						Obj_Bullet.Drawing = False
-					
 		if MapState == Map3:
 			for Obj_Monster in RedMonster:
 				if Obj_Bullet.Drawing == True:
@@ -181,9 +198,9 @@ def update():
 	Cloud.update(MapState)
 	
 def draw():
-	global Count,i, BossNum
+	global Count,i, BossNum,S_BulletNum
 	global Mob,BulltNum,YellowMonster,King,MapState,RedMonster,BossAttack
-	global Cloud
+	global Cloud,SubBullet
 	clear_canvas()
 	
 	#다 그리기(스테이지)
@@ -210,8 +227,13 @@ def draw():
 		
 	for Shot in Bullet:
 		Shot.draw(Player.damage,Player.GM)
+		
 		# 충돌사각형
 		Attack.draw_bb(Shot)
+		
+	for Shot in SubBullet:
+		Shot.Sub_draw(Player.L_Hatch, Player.R_Hatch)
+	
 		
 	# 충돌사각형
 	Player.draw_bb(User)
@@ -241,6 +263,15 @@ def draw():
 			BulltNum += 1
 		if BulltNum > Bullet_Max - 1:
 			BulltNum = 0
+		#########Sub
+		if SubBullet[S_BulletNum].Drawing == False:
+			SubBullet[S_BulletNum].Drawing = True
+			S_BulletNum += 1
+		if S_BulletNum > Bullet_Max - 5:
+			S_BulletNum = 0
+			
+			
+			
 	
 	#구름 그리기
 	Cloud.drawCloud(MapState)
@@ -252,6 +283,8 @@ def draw():
 		King[1].BossAttack(MapState,User.x)
 	elif MapState == Map3:
 		King[2].BossAttack(MapState,User.x)
+	
+	
 	
 	update_canvas()
 	delay(0.05)
@@ -270,8 +303,9 @@ def exit():
 		
 	for Obj_Bullet in Bullet:
 		del Obj_Bullet
-
-	
+		
+	for Obj_Bullet in SubBullet:
+		del Obj_Bullet
 	
 	close_canvas()
 	

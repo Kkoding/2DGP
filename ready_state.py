@@ -58,7 +58,7 @@ def handle_events():
                     #print("OKEY")
                     Player.Bullet(None)
                 if(event.x > 431 and event.x < 548 and 800 - event.y > 373 and 800 - event.y < 519):
-                    if( Player.L_Hatch == True):
+                    if( Player.R_Hatch == True):
                         Player.L_Hatch = True
                     else:
                         Player.R_Hatch = True
