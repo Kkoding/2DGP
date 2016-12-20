@@ -2,9 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04d099dd-1472-40f8-b248-23d7a32de474" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/shop_2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/alarm_mail_01.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/alarm_mail_02.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_pause_option.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_pause_quit.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_pause_resume.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_pause_retry.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_plus.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/btn_profile_upgrade.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/mail_box.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/medal.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_get_gem.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_get_wing.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_long.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_nogold.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_processing_01.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_processing_02.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_processing_03.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_processing_04.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_processing_05.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_purchase_complete.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_send.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_send_fail.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msg_short.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_add_nest.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_daily_gem.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_delete_hatchling.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_get_item.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_guest_login.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_guest_login_02.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_info_msg_send.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_lack_gem.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_lack_wing.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_login_fail.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_need_update.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_new_week.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_purchase_confirm.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_purchase_gem_confirm.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_review.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_send_wing.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_unregister.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/msgbox_wing_off.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/news.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/news_alarm.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/option_icon_music.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/option_icon_sound.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/option_icon_speed.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/pause.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/profile.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/profile_character_01.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/profile_character_02.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/profile_character_03.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/profile_character_04.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/provision.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/purchase_coin.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/purchase_gem.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/purchase_wing.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/quest.mvd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/quest_index.mvd" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mygame.py" afterPath="$PROJECT_DIR$/mygame.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ready_state.py" afterPath="$PROJECT_DIR$/ready_state.py" />
     </list>
     <ignored path="0FlightResource.iws" />
@@ -59,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ready_state.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ready_state.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ready_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+            <state relative-caret-position="379">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -74,8 +132,8 @@
       <file leaf-file-name="select_state.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/select_state.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="42" />
+            <state relative-caret-position="38">
+              <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -83,24 +141,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Collision.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Collision.py">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="368">
+              <caret line="251" column="4" selection-start-line="251" selection-start-column="4" selection-end-line="251" selection-end-column="4" />
+              <folding>
+                <element signature="e#3913#5448#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Main.py">
+      <file leaf-file-name="game_framework.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game_framework.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="252" column="12" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="12" />
-              <folding>
-                <element signature="e#3913#5448#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="557">
+              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,14 +226,13 @@
         <option value="$PROJECT_DIR$/title_state.py" />
         <option value="$PROJECT_DIR$/select_state.py" />
         <option value="$PROJECT_DIR$/mygame.py" />
-        <option value="$PROJECT_DIR$/ready_state.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/ready_state.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="538" />
-    <option name="y" value="3" />
+    <option name="x" value="347" />
     <option name="width" value="1312" />
     <option name="height" value="1040" />
   </component>
@@ -231,7 +288,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../2016-2DGP" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -493,7 +550,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="538" y="3" width="1312" height="1040" extended-state="0" />
+    <frame x="347" y="0" width="1312" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2662037" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -767,14 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game_framework.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1729">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Collision.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -791,28 +840,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/roby_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/start_state.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-32">
           <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/select_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -829,6 +860,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Obj_Monster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1235">
+          <caret line="69" column="12" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/roby_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mygame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -839,30 +886,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ready_state.py">
+    <entry file="file://$PROJECT_DIR$/game_framework.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Obj_Monster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="69" column="12" selection-start-line="69" selection-start-column="12" selection-end-line="69" selection-end-column="12" />
+        <state relative-caret-position="557">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="252" column="12" selection-start-line="252" selection-start-column="12" selection-end-line="252" selection-end-column="12" />
+        <state relative-caret-position="368">
+          <caret line="251" column="4" selection-start-line="251" selection-start-column="4" selection-end-line="251" selection-end-column="4" />
           <folding>
             <element signature="e#3913#5448#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/select_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ready_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

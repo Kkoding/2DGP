@@ -246,13 +246,11 @@ def draw():
 	delay(0.05)
 
 def exit():
-	global Mob, BulltNum, YellowMonster, King, MapState, RedMonster, BossAttack
+	global Mob, BulltNum, YellowMonster, King, MapState, RedMonster, BossAttack,MobLimit
 	global Cloud
-	clear_canvas()
-	for Monster in Montser:
-		del 
-		
-	del (Cloud)
+	close_canvas()
+	
+	
 
 def handle_events():
 	global User
