@@ -125,7 +125,7 @@ def update():
 	for Shot in SubBullet:
 		Shot.Sub_Update(User.x)
 	#for Obj_Bullet in SubBullet:
-	#	Obj_Bullet.update(User.x)
+	#	Obj_Bullet.updatebb()
 		
 	#총알충돌체크
 	for Shot in Bullet:
@@ -227,13 +227,15 @@ def draw():
 		
 	for Shot in Bullet:
 		Shot.draw(Player.damage,Player.GM)
-		
 		# 충돌사각형
 		Attack.draw_bb(Shot)
 		
-	for Shot in SubBullet:
-		Shot.Sub_draw(Player.L_Hatch, Player.R_Hatch)
-	
+	#Bullet-Sub
+	for Obj_Bullet in SubBullet:
+		Obj_Bullet.Sub_draw(Player.L_Hatch, Player.R_Hatch)
+	#Colli-Sub
+	#for Obj_Bullet in SubBullet:
+	#	Obj_Bullet.draw_bb()
 		
 	# 충돌사각형
 	Player.draw_bb(User)

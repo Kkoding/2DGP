@@ -13,8 +13,8 @@ class Player:
 	Rev1, Rev2, Rev3 = 0, 1, 2
 	damage = 1
 	GM = None
-	L_Hatch=None
-	R_Hatch=None
+	L_Hatch=True
+	R_Hatch=True
 	def __init__(self):
 		self.p_image = load_image('D:\\2-2\\2DGP\\Player\\character1.png')
 		self.Sunny = load_image('D:\\2-2\\2DGP\\Player\\sunny.png')

@@ -82,9 +82,13 @@ class Attack:
 		if LB == True:
 			if self.Drawing == True:
 				self.LD.clip_draw(0, 0, 64, 64, self.bX - 64, self.Y2 + 32)
+				self.LSub_draw_bb()
 		if RB == True:
 			if self.Drawing == True:
 				self.RD.clip_draw(0, 0, 64, 64, self.bX + 64, self.Y2 + 32)
+				self.RSub_draw_bb()
+		
+	
 	
 	def collide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -123,8 +127,22 @@ class Attack:
 	def draw_bb(self):
 		if self.Drawing == True:
 			draw_rectangle(*self.get_bb())
-
 	def get_bb(self):
 		return self.bX -10, self.bY-10,self.bX +10,self.bY+20
+	
+	def LSub_draw_bb(self):
+		if self.Drawing == True:
+			draw_rectangle(*self.LSub_get_bb())
+			
+	def RSub_draw_bb(self):
+		if self.Drawing == True:
+			draw_rectangle(*self.RSub_get_bb())
+			
+	def RSub_get_bb(self):
+		return self.bX +55, self.Y2+20,self.bX +75,self.Y2+40
+	
+	def LSub_get_bb(self):
+		return self.bX -75, self.Y2+20,self.bX -55,self.Y2+40
+
 	
 	
