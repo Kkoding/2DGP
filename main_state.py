@@ -336,6 +336,27 @@ def update():
 	#		Obj_Bullet.Drawing = False
 	#		del Obj_Monster
 	
+	#충돌체크 with Coin
+	if MapState == Map1:
+		for Obj_Monster in Mob:
+			if(Obj_Monster.MonHp>13):
+				if Obj_Monster.C_Get == False:
+					if User.collide(Obj_Monster) == True:
+						Obj_Monster.C_Get = True
+						User.Money+=1
+						del Obj_Monster
+					print("d")
+	elif MapState == Map2:
+		for YellowMonster in Mob:
+			if(YellowMonster.MonHp>13):
+				if User.collide(YellowMonster) == True:
+					del Obj_Monster
+	elif MapState == Map3:
+		for RedMonster in Mob:
+			if(RedMonster.MonHp>13):
+				if User.collide(RedMonster) == True:
+					del Obj_Monster
+	
 	
 	# 구름그리기
 	Cloud.update(MapState)
@@ -445,6 +466,20 @@ def draw():
 	elif MapState == Map3:
 		King[2].BossAttack(MapState, User.x)
 	
+	#코인 충돌사각형
+	if MapState == Map1:
+		for i in range(MobLimit):
+			if(Mob[i].MonHp>13):
+				Mob[i].C_draw_bb()
+	elif MapState == Map2:
+		for i in range(MobLimit):
+			if (YellowMonster[i].MonHp > 13):
+				YellowMonster[i].C_draw_bb()
+	elif MapState == Map3:
+		for i in range(MobLimit):
+			if (RedMonster[i].MonHp > 13):
+				RedMonster[i].C_draw_bb()
+					
 	update_canvas()
 	delay(0.05)
 
@@ -495,7 +530,8 @@ def handle_events():
 		if event.type == SDL_QUIT:
 			game_framework.quit()
 		elif (event.key) == (SDLK_SPACE):
-			game_framework.change_state(ready_state)
+			#game_framework.change_state(ready_state)
+			User.Money+=1
 		elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
 			game_framework.change_state(select_state)
 		else:

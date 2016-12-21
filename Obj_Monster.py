@@ -12,6 +12,7 @@ class Monster:
 		self.Mon1=load_image('Monster\\Mon\\Mon1.png')
 		self.Yellow = load_image('Monster\\Mon\\Yellow.png')
 		self.Red = load_image('Monster\\Mon\\Reds.png')
+		
 		self.SizeOfMobX = 70 + (155 * (i % 4))
 		if i<self.Limit:
 			self.SizeOfMobY = 1350
@@ -44,8 +45,11 @@ class Monster:
 		self.DEL=False
 		
 		self.Damaged=False
-	
-	
+		
+		self.Coin = load_image('etc\\coin.png')
+		self.CY=0
+		self.CY_Move = False
+		self.C_Get=False
 	def __del__(self):
 		del self.Hp0
 		del self.Hp1
@@ -68,8 +72,18 @@ class Monster:
 	
 		
 	def update(self,Map):
-		self.MonFrame =(self.MonFrame +1) % 4
-		self.y -= 10
+		if self.y>-100:
+			self.MonFrame =(self.MonFrame +1) % 4
+			self.y -= 10
+			if self.CY_Move == True:
+				self.C_draw_bb()
+				self.CY-=10
+			elif self.MonHp >13:
+				self.C_draw_bb()
+				self.CY+=30
+				if(self.CY == 180):
+					self.CY_Move=True
+				
 	
 	def Damege(self,num):
 		self.MonHp += num
@@ -82,7 +96,10 @@ class Monster:
 				self.Yellow.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
 			elif Map == 2:
 				self.Red.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
-				 
+		else:
+			self.Coin.clip_draw(0,0,32,32,self.SizeOfMobX, self.y+self.CY)
+		
+				 		 
 		if self.Damaged == True:
 			self.drawHp(self.MonHp)
 			
@@ -91,6 +108,7 @@ class Monster:
 		#self.Mon1.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX+155*3, self.y)
 			
 	def drawHp(self,hp):
+		
 		if hp <14:
 			if hp == 0:
 				self.Hp0.clip_draw(0, 0, 132, 27, self.x, self.y - 60)
@@ -143,3 +161,9 @@ class Monster:
 			
 	def get_bb(self):
 		return self.x -60, self.y-60,self.x +60,self.y+20
+	
+	def C_draw_bb(self):
+		draw_rectangle(*self.C_get_bb())
+	
+	def C_get_bb(self):
+		return self.SizeOfMobX-16 , self.y+self.CY-16 , self.SizeOfMobX + 16,self.y+self.CY + 16

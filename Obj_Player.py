@@ -1,9 +1,11 @@
 
 import random
 
+
 from game_framework import *
 from pico2d import *
 from Obj_Bullet import *
+from Obj_Monster import *
 
 Raby, Sunny = 0, 1
 
@@ -36,10 +38,14 @@ class Player:
 		self.y = 50
 		self.state=self.Move_Stop
 		self.speed = 10
+		self.Money=0
+		self.value=0
 		#self.bgm = load_music('logo_background.mp3')
 		#self.bgm.set_volume(64)
 		#self.bgm.play(1)
-	
+		self.Coins = load_image('etc\\item_coin.png')
+		self.num = load_image('etc\\numbers.png')
+		
 	def __del__(self):
 		del self.p_image
 		del self.Sunny
@@ -58,6 +64,42 @@ class Player:
 			self.x = max(0, self.x -self.speed)
 	
 	def draw(self):
+		self.value=self.Money
+		self.Coins.clip_draw(0, 0, 64, 64, 450-64, 750, 64, 64)
+		# self.num.clip_draw(0,0,64,64,450+64+32*(self.Money/10),750,64,64)
+		if self.Money > 99:
+			self.Money=99
+		if self.Money == 99:
+			self.num.clip_draw(64 * 9, 0, 64, 64, 450 + 32 + 16, 750, 64, 64)
+			self.num.clip_draw(64*9, 0, 64, 64, 450 + 64 + 32, 750, 64, 64)
+			self.num.clip_draw(64 * 9, 0, 64, 64, 450  , 750, 64, 64)
+		elif self.Money < 10:
+			self.num.clip_draw(64 * (self.Money % 10), 0, 64, 64, 450 + 32+16 , 750, 64, 64)
+			self.num.clip_draw(0, 0, 64, 64, 450 + 64 + 32, 750, 64, 64)
+		elif self.Money >=10 and self.Money < 99:
+			if self.Money >=10 and self. Money <20:
+				self.num.clip_draw(64, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=20 and self. Money <30:
+				self.num.clip_draw(64*2, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=30 and self. Money <40:
+				self.num.clip_draw(64*3, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=40 and self. Money <50:
+				self.num.clip_draw(64*4, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=50 and self. Money <60:
+				self.num.clip_draw(64*5, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=60 and self. Money <70:
+				self.num.clip_draw(64*6, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=70 and self. Money <80:
+				self.num.clip_draw(64*7, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=80 and self. Money <90:
+				self.num.clip_draw(64*8, 0, 64, 64, 450 , 750, 64, 64)
+			elif self.Money >=90:
+				self.num.clip_draw(64*9, 0, 64, 64, 450 , 750, 64, 64)
+				
+			self.num.clip_draw(64 * (self.Money % 10), 0, 64, 64, 450 + 32 + 16, 750, 64, 64)
+			self.num.clip_draw(0, 0, 64, 64, 450 + 64 + 32, 750, 64, 64)
+			pass
+		
 		if Player.GM == Raby:
 			self.p_image.clip_draw(self.SunnyFrame * 170, 0, 170, 130, self.x, 50)
 		elif Player.GM == Sunny:
@@ -85,7 +127,17 @@ class Player:
 				self.state = self.Move_Left
 			elif self.state in (self.Move_Right,):
 				self.state = self.Move_Stop
-				
+	
+	def collide(self, a):
+		left_a, bottom_a, right_a, top_a = a.C_get_bb()
+		left_b, bottom_b, right_b, top_b = self.get_bb()
+		
+		if left_a > right_b: return False
+		if right_a < left_b: return False
+		if top_a < bottom_b: return False
+		if bottom_a > top_b: return False
+		
+		return True
 	
 	def draw_bb(self):
 		draw_rectangle(*self.get_bb())

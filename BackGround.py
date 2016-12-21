@@ -38,6 +38,8 @@ class BackGround:
 		BackGround.BGM = load_music('logo_background.mp3')
 		BackGround.BGM.set_volume(64)
 		BackGround.BGM.repeat_play()
+		
+		self.Coins = load_image('etc\\item_coin.png')
 	
 	def __del__(self):
 		del self.stage1
@@ -71,6 +73,7 @@ class BackGround:
 			self.CloudY2-=40
 			if self.CloudY2<0:
 				self.Mapping3=True
+		
 	
 	
 	def draw(self):
