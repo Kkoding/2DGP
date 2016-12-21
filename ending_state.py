@@ -1,5 +1,5 @@
 import game_framework
-import title_state
+import Main
 
 from pico2d import *
 
@@ -25,9 +25,10 @@ def enter():
 
 
 def exit():
-    global image
+    global image,BGM
     close_canvas()
     del(image)
+    del(BGM)
     pass
 
 

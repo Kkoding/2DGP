@@ -16,21 +16,21 @@ class Boss:
 	def __init__(self,select):
 		if select==0:
 			self.Boss=self.Boss1
-			self.Boss_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime.png')
-			self.Slime_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\slime die.png')
+			self.Boss_image = load_image('Monster\\Boss\\slime.png')
+			self.Slime_Die_image = load_image('Monster\\Boss\\slime die.png')
 		
 		elif select==1:
 			self.Boss = self.Boss2
-			self.Stone_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Stone.png')
-			self.Stone_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\StoneDie.png')
+			self.Stone_image = load_image('Monster\\Boss\\Stone.png')
+			self.Stone_Die_image = load_image('Monster\\Boss\\StoneDie.png')
 		elif (select == 2):
 			self.Boss=self.Boss3
-			self.Reds_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Reds.png')
-			self.Red_Die_image = load_image('D:\\2-2\\2DGP\\Monster\\Boss\\Reds die.png')
+			self.Reds_image = load_image('Monster\\Boss\\Reds.png')
+			self.Red_Die_image = load_image('Monster\\Boss\\Reds die.png')
 			
 		
 		
-		self.BossHpImage =load_image('D:\\2-2\\2DGP\\Monster\\Boss\\boss_hp.png')
+		self.BossHpImage =load_image('Monster\\Boss\\boss_hp.png')
 		self.Boss_YPos = 3000
 		self.Boss_XPos = 300
 		self.BYPos = self.Boss_YPos
@@ -38,7 +38,7 @@ class Boss:
 		self.Bframe = 0
 		self.FlagBossHp=False
 		
-		self.Boss_Bullet = load_image('D:\\2-2\\2DGP\\Monster\\bullet_boss.png')
+		self.Boss_Bullet = load_image('Monster\\bullet_boss.png')
 		self.BulletX=30
 		self.BulletY=700
 		
@@ -61,6 +61,15 @@ class Boss:
 		self.Timer=0
 		self.num=0
 		
+	#def __del__(self):
+		#del self.Boss_image
+		#del self.Slime_Die_image
+		#del self.Stone_Die_image
+		#del self.Stone_image
+		#del self.BossHpImage
+		#del self.Boss_Bullet
+		#del self.Reds_image
+		#del self.Red_Die_image
 		
 	def update(self,Map):
 		self.imagetimer+=0.5

@@ -55,17 +55,17 @@ def handle_events():
                 print ( event.x,800-event.y)
                 if(event.x> 16 and event.x< 88 and 800-event.y>39 and 800-event.y < 89):
                     game_framework.change_state(Main)
-                if (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
+                elif (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
                     #print("OKEY")
                     Player.Bullet(None)
-                if(event.x > 431 and event.x < 548 and 800 - event.y > 373 and 800 - event.y < 519):
+                elif(event.x > 431 and event.x < 548 and 800 - event.y > 373 and 800 - event.y < 519):
                     if( Player.R_Hatch == True):
                         Player.L_Hatch = True
                     else:
                         Player.R_Hatch = True
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-                game_framework.quit()
+                game_framework.change_state(Main)
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
                 game_framework.change_state(Main)
 

@@ -1,19 +1,26 @@
 import game_framework
 import select_state
+import start_state
 
 from pico2d import *
-import Main
+
 
 name = "TitleState"
 image = None
 BG_Sound=None
 
 
-
+BGM = None
 def enter():
     global  image,BG_Sound
     open_canvas(600,800)
-    image=load_image('..\\BackGround\\Title.png')
+    image=load_image('BackGround\\Title.png')
+    global BGM
+    BGM = load_music('background.mp3')
+    BGM.set_volume(64)
+    BGM.repeat_play()
+    
+    
 def exit():
     global image,BG_Sound
     close_canvas()

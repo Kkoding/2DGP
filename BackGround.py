@@ -11,17 +11,17 @@ class BackGround:
 	
 	
 	def __init__(self):
-		self.stage1 = load_image('D:\\2-2\\2DGP\\BackGround\\03.png')
-		self.stage2 = load_image('D:\\2-2\\2DGP\\BackGround\\07.png')
-		self.stage3 = load_image('D:\\2-2\\2DGP\\BackGround\\12.png')
-		self.Cloud1= load_image('D:\\2-2\\2DGP\\BackGround\\cloud_01.png')
-		self.Cloud2= load_image('D:\\2-2\\2DGP\\BackGround\\cloud_02.png')
-		self.Cloud3 = load_image('D:\\2-2\\2DGP\\BackGround\\cloud_03.png')
-		self.Cloudy = load_image('D:\\2-2\\2DGP\\BackGround\\Cloudy1.png')
+		self.stage1 = load_image('BackGround\\03.png')
+		self.stage2 = load_image('BackGround\\07.png')
+		self.stage3 = load_image('BackGround\\12.png')
+		self.Cloud1= load_image('BackGround\\cloud_01.png')
+		self.Cloud2= load_image('BackGround\\cloud_02.png')
+		self.Cloud3 = load_image('BackGround\\cloud_03.png')
+		self.Cloudy = load_image('BackGround\\Cloudy1.png')
 		
 		
 		
-		#self.Cloud
+		#self.Clo
 		#self.Cloud2
 		#self.Black_Cloud
 		#self.Black_Cloud2
@@ -38,7 +38,18 @@ class BackGround:
 		BackGround.BGM = load_music('logo_background.mp3')
 		BackGround.BGM.set_volume(64)
 		BackGround.BGM.repeat_play()
+	
+	def __del__(self):
+		del self.stage1
+		del self.stage2
+		del self.stage3
+		del self.Cloud1
+		del self.Cloud2
+		del self.Cloud3
+		del self.Cloudy
 		
+	
+	
 	def update(self, Map):
 		#self.BGM.play()
 		

@@ -1,4 +1,5 @@
 from pico2d import *
+
 from Obj_Player import *
 from Collision import*
 import Main
@@ -7,18 +8,22 @@ class Attack:
 	
 	Lev1, Lev2, Lev3 = 0, 1, 2
 	Rev1, Rev2, Rev3 = 0, 1, 2
-	
+	Gun_Sound=None
 	def __init__(self):
-		self.b1_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny.png')
-		self.b2_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny_two.png')
-		self.b3_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_sunny_three.png')
+		self.b1_image = load_image('Player\\bullet_sunny.png')
+		self.b2_image = load_image('Player\\bullet_sunny_two.png')
+		self.b3_image = load_image('Player\\bullet_sunny_three.png')
 		
-		self.r1_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby.png')
-		self.r2_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_two.png')
-		self.r3_image = load_image('D:\\2-2\\2DGP\\Player\\bullet_raby_three.png')
+		self.r1_image = load_image('Player\\bullet_raby.png')
+		self.r2_image = load_image('Player\\bullet_raby_two.png')
+		self.r3_image = load_image('Player\\bullet_raby_three.png')
 		
-		self.LD = load_image('D:\\2-2\\2DGP\\bullet_02_01.png')
-		self.RD = load_image('D:\\2-2\\2DGP\\hatzling_03_01.png')
+		self.LD = load_image('bullet_02_01.png')
+		self.RD = load_image('hatzling_03_01.png')
+		
+		if Attack.Gun_Sound == None:
+			Attack.Gun_Sound = load_wav('missile_show.wav')
+			Attack.Gun_Sound.set_volume(32)
 		
 		self.bX =100
 		self.bY = 50
@@ -31,9 +36,22 @@ class Attack:
 	#	self.Shot_sound = load_wav('D:\\2-2\\2DGP\\Sound\\missile_show.wav')
 	#	self.Shot_sound.set_volume(64)
 	#	self.Shot_sound.repeat_play()
+	
+	def __del__(self):
+		del self.b1_image
+		del self.b2_image
+		del self.b3_image
+		del self.r1_image
+		del self.r2_image
+		del self.r3_image
+		del self.LD
+		del self.RD
+		
+		
 		
 	def update(self,xPos):
 	#	self.Shot_sound.play()
+		self.Gun_Sound.play()
 		if self.Drawing == False:
 			self.bX = xPos
 			self.bY = 50
@@ -49,20 +67,20 @@ class Attack:
 			if damage == 1:
 				if self.Drawing == True:
 					self.b1_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
-			if damage == 2:
+			elif damage == 2:
 				if self.Drawing == True:
 					self.b2_image.clip_draw(0, 0, 129, 129, self.bX, self.bY)
-			if damage == 3:
+			elif damage == 3:
 				if self.Drawing == True:
 					self.b3_image.clip_draw(0, 0, 128, 128, self.bX, self.bY)
 		else:
 			if damage == 1:
 				if self.Drawing == True:
 					self.r1_image.clip_draw(0, 0, 64, 64, self.bX, self.bY)
-			if damage == 2:
+			elif damage == 2:
 				if self.Drawing == True:
 					self.r2_image.clip_draw(0, 0, 101, 93, self.bX, self.bY)
-			if damage == 3:
+			elif damage == 3:
 				if self.Drawing == True:
 					self.r3_image.clip_draw(0, 0, 129, 125, self.bX, self.bY)
 	
@@ -70,7 +88,7 @@ class Attack:
 			if self.Drawing == False:
 				self.bX = xPos
 				self.Y2 = 50
-			if self.Drawing == True:
+			elif self.Drawing == True:
 				self.Y2 += self.YSpeed
 				if self.Y2 > 800:
 					self.Drawing = False
@@ -81,7 +99,7 @@ class Attack:
 		if self.Drawing == False:
 			self.bX = xPos
 			self.Y3 = 50
-		if self.Drawing == True:
+		elif self.Drawing == True:
 			self.Y3 += self.YSpeed
 			if self.Y3 > 800:
 				self.Drawing = False
@@ -93,13 +111,13 @@ class Attack:
 		if RB == True:
 			if self.Drawing == True:
 				self.RD.clip_draw(0, 0, 64, 64, self.bX + 64, self.Y2 + 32)
-				self.RSub_draw_bb()
+				#self.RSub_draw_bb()
 		
 	def LSub_draw(self,LB):
 		if LB == True:
 			if self.Drawing == True:
 				self.LD.clip_draw(0, 0, 64, 64, self.bX - 64, self.Y3 + 32)
-				self.LSub_draw_bb()
+				#self.LSub_draw_bb()
 	
 	def collide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
@@ -139,7 +157,7 @@ class Attack:
 		if self.Drawing == True:
 			draw_rectangle(*self.get_bb())
 	def get_bb(self):
-		return self.bX -10, self.bY-10,self.bX +10,self.bY+20
+		return self.bX -15, self.bY-10,self.bX +15,self.bY+20
 	
 	def Rcollide(self, a):
 		left_a, bottom_a, right_a, top_a = a.get_bb()
