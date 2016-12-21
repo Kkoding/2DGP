@@ -45,7 +45,7 @@ class Player:
 		del self.Sunny
 		del self.LD
 		del self.RD
-		del self.bgm
+		#del self.bgm
 	
 	def update(self):
 		self.frame = (self.frame + 1) % 4

@@ -2,7 +2,7 @@ from pico2d import *
 
 import game_framework
 
-import Main
+import main_state
 
 from BackGround import *
 from Obj_Monster import *

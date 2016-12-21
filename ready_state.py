@@ -1,6 +1,6 @@
 import game_framework
 import title_state
-import Main
+import main_state
 
 from pico2d import *
 
@@ -54,7 +54,7 @@ def handle_events():
             if event.button == SDL_BUTTON_LEFT:
                 print ( event.x,800-event.y)
                 if(event.x> 16 and event.x< 88 and 800-event.y>39 and 800-event.y < 89):
-                    game_framework.change_state(Main)
+                    game_framework.change_state(main_state)
                 elif (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
                     #print("OKEY")
                     Player.Bullet(None)
@@ -65,9 +65,9 @@ def handle_events():
                         Player.R_Hatch = True
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-                game_framework.change_state(Main)
+                game_framework.change_state(main_state)
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
-                game_framework.change_state(Main)
+                game_framework.change_state(main_state)
 
     pass
 

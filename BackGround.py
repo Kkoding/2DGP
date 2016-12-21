@@ -2,7 +2,7 @@ from pico2d import *
  
 import game_framework
 
-from Main import *
+from main_state import *
 
 class BackGround:
 	Map1, Map2, Map3 = 0,1,2

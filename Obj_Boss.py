@@ -2,8 +2,10 @@ from pico2d import *
 
 import random
 import game_framework
+import start_state
+import title_state
 
-import Main
+import main_state
 
 import math
 
@@ -137,6 +139,8 @@ class Boss:
 				self.Reds_image.clip_draw(512*self.Bframe%4,0,512,512,self.BXPos,self.BYPos)
 			else:
 				self.Red_Die_image.clip_draw(0, 0, 500, 485, self.BXPos, self.BYPos )
+					
+				
 				
 		if self.FlagBossHp == True:
 			self.BossHpImage.clip_draw(0, 0, self.SlimeHp * 100, 25, 0, 790)
@@ -180,6 +184,7 @@ class Boss:
 	def getHp(self,damage,Map):
 		if self.SlimeHp>=0:
 			self.SlimeHp-= damage
+			return self.SlimeHp
 		
 		
 	#할튼 날라가버리기~

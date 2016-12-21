@@ -2,7 +2,7 @@ from pico2d import *
 
 from Obj_Player import *
 from Collision import*
-import Main
+import main_state
 
 class Attack:
 	

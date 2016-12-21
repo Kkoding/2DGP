@@ -1,14 +1,15 @@
-from pico2d import *
+import game_framework
+import ready_state
+import select_state
+import start_state
 
 import random
 import os
 import math
 
-import game_framework
-import title_state
-import ready_state
-import select_state
 
+import title_state
+from pico2d import *
 name = "Main"
 
 from BackGround import *
@@ -59,7 +60,7 @@ gBGM = None
 def enter():
 	global Stage, Bullet, Mob, User, King, BossShot, Cloud, YellowMonster, MapState, RedMonster, BossAttack
 	global SubBullet, SubBullet2
-	open_canvas(600, 800, sync=True)
+	open_canvas(600, 800)
 	
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	SubBullet = [Attack() for i in range(Bullet_Max)]
@@ -79,6 +80,7 @@ def enter():
 	gBGM = load_music('logo_background.mp3')
 	gBGM.set_volume(64)
 	gBGM.repeat_play()
+	
 
 def update():
 	global MapState, Stage, BulltNum, i, BossNum, King, BossAttack
@@ -313,6 +315,10 @@ def update():
 							King[2].FlagBossHp = True
 							King[2].getHp(User.damage, MapState)
 							Obj_Bullet.Drawing = False
+							
+	
+	#if King[2].getHp(User.damage, MapState) == 0:
+	#	game_framework.change_state(start_state)
 	
 	# for Obj_Monster in Mob:
 	#	if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
@@ -334,6 +340,9 @@ def update():
 	# 구름그리기
 	Cloud.update(MapState)
 
+	if(King[2].SlimeHp == 0):
+		game_framework.change_state(ready_state)
+		return
 
 def draw():
 	global Count, i, BossNum, S_BulletNum, S_BulletNum2
@@ -426,6 +435,7 @@ def draw():
 	
 	# 구름 그리기
 	Cloud.drawCloud(MapState)
+	
 	BossNum += 1
 	# 보스총알
 	if MapState == Map1:
@@ -450,7 +460,7 @@ def exit():
 	for Obj_Bullet in SubBullet2:
 		del (Obj_Bullet)
 
-	del (Stage)
+	#del (Stage)
 	
 	#for i in range(MobLimit):
 	#	del Mob[i]
@@ -464,8 +474,8 @@ def exit():
 	
 
 	del (User)
-	del (Cloud)
-	del (MapState)
+	#del (Cloud)
+	#del (MapState)
 	del (BossAttack[0])
 	del (BossAttack[1])
 	del (BossAttack[2])

@@ -2,7 +2,7 @@ import game_framework
 import select_state
 
 from pico2d import *
-import Main
+import main_state
 
 from BackGround import *
 from Obj_Monster import *
@@ -43,10 +43,10 @@ def handle_events():
 			elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):
 				game_framework.change_state(select_state)
 			elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_1):
-				game_framework.change_state(Main)
+				game_framework.change_state(main_state)
 				Player.GM = Raby
 			elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_2):
-				game_framework.change_state(Main)
+				game_framework.change_state(main_state)
 				Player.GM = Sunny
 	pass
 
