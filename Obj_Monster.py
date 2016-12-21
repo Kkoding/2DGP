@@ -69,6 +69,7 @@ class Monster:
 		del self.Mon1
 		del self.Red
 		del self.Yellow
+		del self.Coin
 	
 		
 	def update(self,Map):

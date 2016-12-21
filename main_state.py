@@ -85,6 +85,7 @@ def enter():
 def update():
 	global MapState, Stage, BulltNum, i, BossNum, King, BossAttack
 	global Cloud, BG_Sound, gBGM, SubBullet, SubBullet2
+	global YellowMonster,RedMonster
 	
 	
 	# stage
@@ -336,6 +337,25 @@ def update():
 	#		Obj_Bullet.Drawing = False
 	#		del Obj_Monster
 	
+	#User, Mob/ Protect
+	if MapState == Map1:
+		for Obj_Monster in Mob:
+			if Obj_Monster.MonHp<14:
+				if User.collide2(Obj_Monster) == True:
+					Player.Protect = False
+					
+	elif MapState == Map2:
+		for Obj_Monster in YellowMonster:
+			if Obj_Monster.MonHp < 14:
+				if User.collide2(Obj_Monster) == True:
+					Player.Protect = False
+					
+	elif MapState == Map3:
+		for Obj_Monster in RedMonster:
+			if Obj_Monster.MonHp < 14:
+				if User.collide2(Obj_Monster) == True:
+					Player.Protect = False
+
 	#충돌체크 with Coin
 	if MapState == Map1:
 		for Obj_Monster in Mob:
@@ -343,18 +363,22 @@ def update():
 				if Obj_Monster.C_Get == False:
 					if User.collide(Obj_Monster) == True:
 						Obj_Monster.C_Get = True
-						User.Money+=1
+						Player.Money+=1
 						del Obj_Monster
 					print("d")
 	elif MapState == Map2:
 		for YellowMonster in Mob:
 			if(YellowMonster.MonHp>13):
 				if User.collide(YellowMonster) == True:
+					Obj_Monster.C_Get = True
+					Player.Money += 1
 					del Obj_Monster
 	elif MapState == Map3:
 		for RedMonster in Mob:
 			if(RedMonster.MonHp>13):
 				if User.collide(RedMonster) == True:
+					Obj_Monster.C_Get = True
+					Player.Money += 1
 					del Obj_Monster
 	
 	
@@ -467,18 +491,18 @@ def draw():
 		King[2].BossAttack(MapState, User.x)
 	
 	#코인 충돌사각형
-	if MapState == Map1:
-		for i in range(MobLimit):
-			if(Mob[i].MonHp>13):
-				Mob[i].C_draw_bb()
-	elif MapState == Map2:
-		for i in range(MobLimit):
-			if (YellowMonster[i].MonHp > 13):
-				YellowMonster[i].C_draw_bb()
-	elif MapState == Map3:
-		for i in range(MobLimit):
-			if (RedMonster[i].MonHp > 13):
-				RedMonster[i].C_draw_bb()
+	#if MapState == Map1:
+	#	for i in range(MobLimit):
+	#		if(Mob[i].MonHp>13):
+	#			Mob[i].C_draw_bb()
+	#elif MapState == Map2:
+	#	for i in range(MobLimit):
+	#		if (YellowMonster[i].MonHp > 13):
+	#			YellowMonster[i].C_draw_bb()
+	#elif MapState == Map3:
+	#	for i in range(MobLimit):
+	#		if (RedMonster[i].MonHp > 13):
+	#			RedMonster[i].C_draw_bb()
 					
 	update_canvas()
 	delay(0.05)
@@ -530,8 +554,9 @@ def handle_events():
 		if event.type == SDL_QUIT:
 			game_framework.quit()
 		elif (event.key) == (SDLK_SPACE):
-			#game_framework.change_state(ready_state)
-			User.Money+=1
+			Player.Money+=1
+		elif event.key ==SDLK_0:
+			 game_framework.change_state(ready_state)
 		elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
 			game_framework.change_state(select_state)
 		else:
