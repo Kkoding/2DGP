@@ -81,7 +81,7 @@ class Monster:
 			elif self.MonHp >13:
 				self.C_draw_bb()
 				self.CY+=30
-				if(self.CY == 180):
+				if(self.CY == 240):
 					self.CY_Move=True
 				
 	
