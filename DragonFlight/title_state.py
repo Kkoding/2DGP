@@ -13,7 +13,7 @@ BG_Sound=None
 def enter():
     global  image,BG_Sound
     open_canvas(600,800)
-    image=load_image('D:\\2-2\\2DGP\\BackGround\\Title.png')
+    image=load_image('..\\BackGround\\Title.png')
 def exit():
     global image,BG_Sound
     close_canvas()
