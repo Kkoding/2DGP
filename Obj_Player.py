@@ -50,6 +50,7 @@ class Player:
 		self.Protect_image = load_image('Player\\protect_missile.png')
 		
 		
+		
 	def __del__(self):
 		del self.p_image
 		del self.Sunny
@@ -58,6 +59,7 @@ class Player:
 		del self.Coins
 		del self.num
 		del self.Protect_image
+		
 		
 		#del self.bgm
 	

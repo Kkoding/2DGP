@@ -2,14 +2,15 @@ import game_framework
 import ready_state
 import select_state
 import start_state
+import lose_state
 
 import random
 import os
 import math
 
-
 import title_state
 from pico2d import *
+
 name = "Main"
 
 from BackGround import *
@@ -50,7 +51,6 @@ SubBullet2 = None
 #   보스 탄환알고리즘 구현하기(시간지남에 따라서 패턴반복)
 
 Cloud = None
-YellowMonster = None
 RedMonster = None
 BossAttack = None
 BossNum = 0
@@ -60,7 +60,7 @@ gBGM = None
 def enter():
 	global Stage, Bullet, Mob, User, King, BossShot, Cloud, YellowMonster, MapState, RedMonster, BossAttack
 	global SubBullet, SubBullet2
-	open_canvas(600, 800)
+	open_canvas(600, 800,sync=True)
 	
 	Bullet = [Attack() for i in range(Bullet_Max)]
 	SubBullet = [Attack() for i in range(Bullet_Max)]
@@ -80,13 +80,12 @@ def enter():
 	gBGM = load_music('logo_background.mp3')
 	gBGM.set_volume(64)
 	gBGM.repeat_play()
-	
+
 
 def update():
 	global MapState, Stage, BulltNum, i, BossNum, King, BossAttack
 	global Cloud, BG_Sound, gBGM, SubBullet, SubBullet2
-	global YellowMonster,RedMonster
-	
+	global YellowMonster, RedMonster
 	
 	# stage
 	Stage.update(MapState)
@@ -132,7 +131,7 @@ def update():
 		Shot.Sub_Update2(User.x)
 	
 	# for Obj_Bullet in SubBullet:
-	#	Obj_Bullet.updatebb()
+	#   Obj_Bullet.updatebb()
 	
 	# 총알충돌체크
 	for Shot in Bullet:
@@ -143,7 +142,7 @@ def update():
 		if MapState == Map1:
 			for Obj_Monster in Mob:
 				if Obj_Bullet.Drawing == True:
-					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 						Obj_Bullet.Drawing = False
 						# 들어가는 데미지
 						if Obj_Monster.Damaged == True:
@@ -162,7 +161,7 @@ def update():
 		elif MapState == Map2:
 			for Obj_Monster in YellowMonster:
 				if Obj_Bullet.Drawing == True:
-					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 						Obj_Bullet.Drawing = False
 						if Obj_Monster.Damaged == True:
 							Obj_Monster.Damege(Player.damage)
@@ -180,7 +179,7 @@ def update():
 		elif MapState == Map3:
 			for Obj_Monster in RedMonster:
 				if Obj_Bullet.Drawing == True:
-					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+					if Obj_Bullet.collide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 						Obj_Bullet.Drawing = False
 						if Obj_Monster.Damaged == True:
 							Obj_Monster.Damege(Player.damage)
@@ -202,7 +201,7 @@ def update():
 			if MapState == Map1:
 				for Obj_Monster in Mob:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -221,7 +220,7 @@ def update():
 			elif MapState == Map2:
 				for Obj_Monster in YellowMonster:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -240,7 +239,7 @@ def update():
 			elif MapState == Map3:
 				for Obj_Monster in RedMonster:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Rcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -256,13 +255,13 @@ def update():
 							King[2].FlagBossHp = True
 							King[2].getHp(User.damage, MapState)
 							Obj_Bullet.Drawing = False
-							
+	
 	if Player.L_Hatch == True:
 		for Obj_Bullet in SubBullet2:
 			if MapState == Map1:
 				for Obj_Monster in Mob:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -281,7 +280,7 @@ def update():
 			if MapState == Map2:
 				for Obj_Monster in YellowMonster:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -300,7 +299,7 @@ def update():
 			elif MapState == Map3:
 				for Obj_Monster in RedMonster:
 					if Obj_Bullet.Drawing == True:
-						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y>0:
+						if Obj_Bullet.Lcollide(Obj_Monster) == True and Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
 							Obj_Bullet.Drawing = False
 							# 들어가는 데미지
 							if Obj_Monster.Damaged == True:
@@ -316,78 +315,80 @@ def update():
 							King[2].FlagBossHp = True
 							King[2].getHp(User.damage, MapState)
 							Obj_Bullet.Drawing = False
-							
 	
-	#if King[2].getHp(User.damage, MapState) == 0:
-	#	game_framework.change_state(start_state)
+	# if King[2].getHp(User.damage, MapState) == 0:
+	#   game_framework.change_state(start_state)
 	
 	# for Obj_Monster in Mob:
-	#	if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
-	#		Obj_Monster.Damaged = False
-	#		Obj_Bullet.Drawing = False
-	#		del Obj_Monster
+	#   if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
+	#      Obj_Monster.Damaged = False
+	#      Obj_Bullet.Drawing = False
+	#      del Obj_Monster
 	# for Obj_Monster in YellowMonster:
-	#	if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
-	#		Obj_Monster.Damaged = False
-	#		Obj_Bullet.Drawing = False
-	#		del Obj_Monster
+	#   if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
+	#      Obj_Monster.Damaged = False
+	#      Obj_Bullet.Drawing = False
+	#      del Obj_Monster
 	# for Obj_Monster in RedMonster:
-	#	if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
-	#		Obj_Monster.Damaged = False
-	#		Obj_Bullet.Drawing = False
-	#		del Obj_Monster
+	#   if Obj_Monster.MonHp >= 14 or Obj_Monster.y < 0:
+	#      Obj_Monster.Damaged = False
+	#      Obj_Bullet.Drawing = False
+	#      del Obj_Monster
 	
-	#User, Mob/ Protect
+	# User, Mob/ Protect
 	if MapState == Map1:
 		for Obj_Monster in Mob:
-			if Obj_Monster.MonHp<14:
+			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
+					del Obj_Monster
 					Player.Protect = False
-					
+	
 	elif MapState == Map2:
 		for Obj_Monster in YellowMonster:
 			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
+					del Obj_Monster
 					Player.Protect = False
-					
+	
 	elif MapState == Map3:
 		for Obj_Monster in RedMonster:
 			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
+					del Obj_Monster
 					Player.Protect = False
-
-	#충돌체크 with Coin
+	
+	# 충돌체크 with Coin
 	if MapState == Map1:
 		for Obj_Monster in Mob:
-			if(Obj_Monster.MonHp>13):
+			if (Obj_Monster.MonHp > 13):
 				if Obj_Monster.C_Get == False:
 					if User.collide(Obj_Monster) == True:
 						Obj_Monster.C_Get = True
-						Player.Money+=1
+						Player.Money += 1
 						del Obj_Monster
-					print("d")
+					
 	elif MapState == Map2:
-		for YellowMonster in Mob:
-			if(YellowMonster.MonHp>13):
-				if User.collide(YellowMonster) == True:
+		for Obj_Monster in YellowMonster:
+			if (Obj_Monster.MonHp > 13):
+				if User.collide(Obj_Monster) == True:
 					Obj_Monster.C_Get = True
 					Player.Money += 1
 					del Obj_Monster
 	elif MapState == Map3:
-		for RedMonster in Mob:
-			if(RedMonster.MonHp>13):
-				if User.collide(RedMonster) == True:
+		for Obj_Monster in RedMonster:
+			if (Obj_Monster.MonHp > 13):
+				if User.collide(Obj_Monster) == True:
 					Obj_Monster.C_Get = True
 					Player.Money += 1
 					del Obj_Monster
 	
-	
 	# 구름그리기
 	Cloud.update(MapState)
-
-	if(King[2].SlimeHp == 0):
+	
+	if (King[2].SlimeHp == 0):
 		game_framework.change_state(ready_state)
 		return
+
 
 def draw():
 	global Count, i, BossNum, S_BulletNum, S_BulletNum2
@@ -400,12 +401,16 @@ def draw():
 	Stage.draw2()
 	# 몬스터
 	if MapState == Map1:
-		for i in range(MobLimit):
-			Mob[i].draw(MapState)
-	elif MapState == Map2:
-		for i in range(MobLimit):
-			YellowMonster[i].draw(MapState)
-	elif MapState == Map3:
+		for Obj_Monster in Mob:
+			Obj_Monster.draw(MapState)
+		# for i in range(MobLimit):
+		#   Mob[i].draw(MapState)
+	if MapState == Map2:
+		for Obj_Monster in YellowMonster:
+			Obj_Monster.draw(MapState)
+		# for i in range(MobLimit):
+		#   YellowMonster[i].draw(MapState)
+	if MapState == Map3:
 		for i in range(MobLimit):
 			RedMonster[i].draw(MapState)
 	
@@ -419,8 +424,8 @@ def draw():
 	
 	for Shot in Bullet:
 		Shot.draw(Player.damage, Player.GM)
-		# 충돌사각형
-		#Attack.draw_bb(Shot)
+	# 충돌사각형
+	# Attack.draw_bb(Shot)
 	
 	# Bullet-Sub
 	for Obj_Bullet in SubBullet:
@@ -431,29 +436,29 @@ def draw():
 	
 	# Colli-Sub
 	# for Obj_Bullet in SubBullet:
-	#	Obj_Bullet.draw_bb()
+	#   Obj_Bullet.draw_bb()
 	
 	# 충돌사각형
-	#Player.draw_bb(User)
-	#if MapState == Map1:
-	#	for Obj_Monster in Mob:
-	#		if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
-	#			Obj_Monster.draw_bb()
-	#elif MapState == Map2:
-	#	for Obj_Monster in YellowMonster:
-	#		if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
-	#			Obj_Monster.draw_bb()
-	#elif MapState == Map3:
-	#	for Obj_Monster in RedMonster:
-	#		if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
-	#			Obj_Monster.draw_bb()
+	# Player.draw_bb(User)
+	# if MapState == Map1:
+	#   for Obj_Monster in Mob:
+	#      if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
+	#         Obj_Monster.draw_bb()
+	# elif MapState == Map2:
+	#   for Obj_Monster in YellowMonster:
+	#      if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
+	#         Obj_Monster.draw_bb()
+	# elif MapState == Map3:
+	#   for Obj_Monster in RedMonster:	#   Boss.draw_bb3(King[2])
+	#      if Obj_Monster.MonHp < 14 and Obj_Monster.y > 0:
+	#         Obj_Monster.draw_bb()
 	
-	#if MapState == Map1:
-	#	Boss.draw_bb(King[0])
-	#elif MapState == Map2:
-	#	Boss.draw_bb2(King[1])
-	#elif MapState == Map3:
-	#	Boss.draw_bb3(King[2])
+	# if MapState == Map1:
+	#   Boss.draw_bb(King[0])
+	# elif MapState == Map2:
+	#   Boss.draw_bb2(King[1])
+	# elif MapState == Map3:
+
 	
 	# T/F ?? Count of Bullet
 	Count += 3
@@ -461,7 +466,7 @@ def draw():
 		if Bullet[BulltNum].Drawing == False:
 			Bullet[BulltNum].Drawing = True
 			BulltNum += 1
-			if BulltNum > Bullet_Max-1:
+			if BulltNum > Bullet_Max - 1:
 				BulltNum = 0
 		
 		#########Sub
@@ -490,27 +495,27 @@ def draw():
 	elif MapState == Map3:
 		King[2].BossAttack(MapState, User.x)
 	
-	#코인 충돌사각형
-	#if MapState == Map1:
-	#	for i in range(MobLimit):
-	#		if(Mob[i].MonHp>13):
-	#			Mob[i].C_draw_bb()
-	#elif MapState == Map2:
-	#	for i in range(MobLimit):
-	#		if (YellowMonster[i].MonHp > 13):
-	#			YellowMonster[i].C_draw_bb()
-	#elif MapState == Map3:
-	#	for i in range(MobLimit):
-	#		if (RedMonster[i].MonHp > 13):
-	#			RedMonster[i].C_draw_bb()
-					
+	# 코인 충돌사각형
+	# if MapState == Map1:
+	#   for i in range(MobLimit):
+	#      if(Mob[i].MonHp>13):
+	#         Mob[i].C_draw_bb()
+	# elif MapState == Map2:
+	#   for i in range(MobLimit):
+	#      if (YellowMonster[i].MonHp > 13):
+	#         YellowMonster[i].C_draw_bb()
+	# elif MapState == Map3:
+	#   for i in range(MobLimit):
+	#      if (RedMonster[i].MonHp > 13):
+	#         RedMonster[i].C_draw_bb()
+	
 	update_canvas()
 	delay(0.05)
 
 
 def exit():
 	global Mob, BulltNum, YellowMonster, King, MapState, RedMonster, BossAttack, MobLimit, User
-	global Cloud, Stage,gBGM
+	global Cloud, Stage, gBGM
 	
 	for Obj_Bullet in Bullet:
 		del (Obj_Bullet)
@@ -518,11 +523,11 @@ def exit():
 		del (Obj_Bullet)
 	for Obj_Bullet in SubBullet2:
 		del (Obj_Bullet)
-
-	#del (Stage)
 	
-	#for i in range(MobLimit):
-	#	del Mob[i]
+	# del (Stage)
+	
+	# for i in range(MobLimit):
+	#   del Mob[i]
 	
 	for Obj_Monster in Mob:
 		del (Obj_Monster)
@@ -531,10 +536,9 @@ def exit():
 	for Obj_Monster in YellowMonster:
 		del (Obj_Monster)
 	
-
 	del (User)
-	#del (Cloud)
-	#del (MapState)
+	# del (Cloud)
+	# del (MapState)
 	del (BossAttack[0])
 	del (BossAttack[1])
 	del (BossAttack[2])
@@ -554,11 +558,13 @@ def handle_events():
 		if event.type == SDL_QUIT:
 			game_framework.quit()
 		elif (event.key) == (SDLK_SPACE):
-			Player.Money+=1
-		elif event.key ==SDLK_0:
-			 game_framework.change_state(ready_state)
+			Player.Money += 1
+		elif event.key == SDLK_0:
+			game_framework.change_state(ready_state)
 		elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
 			game_framework.change_state(select_state)
+		elif event.key == SDLK_3:
+			game_framework.change_state(lose_state)
 		else:
 			User.handle_event(event)
 			Stage.handle_event(event)

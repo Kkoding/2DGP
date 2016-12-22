@@ -24,7 +24,10 @@ def enter():
     global image,BGM,shop_bgm,Sound_Button
     open_canvas(600,800)
     image=load_image('shop_3.png')
-
+    global BGM
+    BGM = load_music('gameclear.mp3')
+    BGM.set_volume(64)
+    BGM.repeat_play()
 
 def exit():
 	global image
@@ -52,19 +55,22 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_MOUSEBUTTONDOWN:
             if event.button == SDL_BUTTON_LEFT:
-                print ( event.x,800-event.y)
+               # print ( event.x,800-event.y)
                 if(event.x> 16 and event.x< 88 and 800-event.y>39 and 800-event.y < 89):
                     game_framework.change_state(main_state)
                 elif (event.x > 50 and event.x < 189 and 800 - event.y > 357 and 800 - event.y < 519):
                     #print("OKEY")
                     Player.Bullet(None)
+                    Player.Money-=1
                 elif(event.x > 431 and event.x < 548 and 800 - event.y > 373 and 800 - event.y < 519):
+                    Player.Money -= 1
                     if( Player.R_Hatch == True):
                         Player.L_Hatch = True
                     else:
                         Player.R_Hatch = True
                 elif (event.x > 244 and event.x < 338 and 800 - event.y > 605 and 800 - event.y < 712):
                     Player.Protect=True
+                    Player.Money -= 1
         else:
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.change_state(main_state)

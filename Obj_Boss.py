@@ -202,7 +202,8 @@ class Boss:
 		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos - self.Patter1Y/4 * math.sin(math.pi / 2),self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
 		#5.35
 		self.Boss_Bullet.clip_draw(0, 0, 52, 52, self.BXPos - self.Patter1Y / 4 * math.sin(math.pi / 2), self.BYPos + self.Patter1Y * math.sin(math.pi / 2))
-		
+	
+			
 	
 	#채찍
 	def Patter2_Draw(self):
