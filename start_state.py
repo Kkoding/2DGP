@@ -16,7 +16,7 @@ BGM = None
 def enter():
     global image
     open_canvas(600,800)
-    image=load_image('kpu_credit.png')
+    image=load_image('BackGround\\kpu_credit.png')
 
     #global BGM
     #BGM = load_music('background.mp3')
@@ -47,7 +47,7 @@ def update():
 def draw():
     global image
     clear_canvas()
-    image.clip_draw(0, 0, 800, 1200, 300, 400, 600, 1200)
+    image.clip_draw(0, 0, 800, 800, 300, 400)
    # image.draw(400,300)
     update_canvas()
     pass

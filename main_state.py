@@ -3,6 +3,7 @@ import ready_state
 import select_state
 import start_state
 import lose_state
+import win_state
 
 import random
 import os
@@ -55,11 +56,12 @@ RedMonster = None
 BossAttack = None
 BossNum = 0
 gBGM = None
+load_time=0
 
 
 def enter():
 	global Stage, Bullet, Mob, User, King, BossShot, Cloud, YellowMonster, MapState, RedMonster, BossAttack
-	global SubBullet, SubBullet2
+	global SubBullet, SubBullet2,load_time
 	open_canvas(600, 800,sync=True)
 	
 	Bullet = [Attack() for i in range(Bullet_Max)]
@@ -77,16 +79,18 @@ def enter():
 	BossAttack = [Boss(i) for i in range(10)]
 	
 	global gBGM
-	gBGM = load_music('logo_background.mp3')
+	gBGM = load_music('Sound\\logo_background.mp3')
 	gBGM.set_volume(64)
 	gBGM.repeat_play()
-
+	load_time=0
 
 def update():
 	global MapState, Stage, BulltNum, i, BossNum, King, BossAttack
 	global Cloud, BG_Sound, gBGM, SubBullet, SubBullet2
-	global YellowMonster, RedMonster
+	global YellowMonster, RedMonster,load_time
 	
+	if (King[2].SlimeHp == 0):
+		load_time += 0.1
 	# stage
 	Stage.update(MapState)
 	if MapState == Map1:
@@ -99,8 +103,7 @@ def update():
 		for i in range(MobLimit):
 			RedMonster[i].update(MapState)
 	
-	# Player
-	User.update()
+	
 	
 	# Kings
 	if MapState == Map1:
@@ -363,30 +366,37 @@ def update():
 			if (Obj_Monster.MonHp > 13):
 				if Obj_Monster.C_Get == False:
 					if User.collide(Obj_Monster) == True:
-						Obj_Monster.C_Get = True
-						Player.Money += 1
-						del Obj_Monster
+						if Obj_Monster.C_Get==False:
+							Obj_Monster.C_Get = True
+							Player.Money += 1
+							del Obj_Monster
 					
 	elif MapState == Map2:
 		for Obj_Monster in YellowMonster:
 			if (Obj_Monster.MonHp > 13):
 				if User.collide(Obj_Monster) == True:
-					Obj_Monster.C_Get = True
-					Player.Money += 1
-					del Obj_Monster
+					if Obj_Monster.C_Get == False:
+						Obj_Monster.C_Get = True
+						Player.Money += 1
+						del Obj_Monster
+					
 	elif MapState == Map3:
 		for Obj_Monster in RedMonster:
 			if (Obj_Monster.MonHp > 13):
 				if User.collide(Obj_Monster) == True:
-					Obj_Monster.C_Get = True
-					Player.Money += 1
-					del Obj_Monster
-	
+					if Obj_Monster.C_Get == False:
+						Obj_Monster.C_Get = True
+						Player.Money += 1
+						del Obj_Monster
+						
+						
+	# Player
+	User.update()
 	# 구름그리기
 	Cloud.update(MapState)
 	
 	if (King[2].SlimeHp == 0):
-		game_framework.change_state(ready_state)
+		game_framework.change_state(win_state)
 		return
 
 
@@ -565,6 +575,8 @@ def handle_events():
 			game_framework.change_state(select_state)
 		elif event.key == SDLK_3:
 			game_framework.change_state(lose_state)
+		elif event.key == SDLK_4:
+			game_framework.change_state(win_state)
 		else:
 			User.handle_event(event)
 			Stage.handle_event(event)

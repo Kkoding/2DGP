@@ -35,7 +35,7 @@ class BackGround:
 		self.Mapping2=False
 		self.Mapping3=False
 		
-		BackGround.BGM = load_music('logo_background.mp3')
+		BackGround.BGM = load_music('Sound\\logo_background.mp3')
 		BackGround.BGM.set_volume(64)
 		BackGround.BGM.repeat_play()
 		

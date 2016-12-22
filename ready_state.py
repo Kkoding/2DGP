@@ -19,29 +19,48 @@ Sound_Button = None
 
 BGM = None
 shop_bgm = None
+image2=None
+image3=None
+YPos=400
+Y2Pos=1600
 
 def enter():
-    global image,BGM,shop_bgm,Sound_Button
+    global image,BGM,shop_bgm,Sound_Button,image2,image3,YPos,Y2Pos
+    YPos=400
+    Y2Pos=YPos+1200
     open_canvas(600,800)
-    image=load_image('shop_3.png')
+    image=load_image('BackGround\\shop_33.png')
     global BGM
-    BGM = load_music('gameclear.mp3')
+    BGM = load_music('Sound\\gameclear.mp3')
     BGM.set_volume(64)
     BGM.repeat_play()
+    image2 = load_image('BackGround\\01.png')
+    image3 = load_image('BackGround\\01.png')
+    
 
 def exit():
-	global image
+	global image,image2,image3
 	close_canvas()
 	del (image)
-
+    
 
 def update():
+    global YPos,Y2Pos
+    YPos-=2
+    Y2Pos-=2
+    if YPos <-400:
+        YPos=400
+    if Y2Pos <800:
+        Y2Pos = 1600
+    delay(0.01)
     pass
 
 
 def draw():
-    global image
+    global image,Y2Pos,YPos,image3,image2
     clear_canvas()
+    image3.clip_draw(0, 0, 800, 1200, 300, Y2Pos)
+    image2.clip_draw(0, 0, 800, 1200, 300, YPos)
     image.clip_draw(0, 0, 550, 643, 300, 400, 600, 800)
     #image.draw(400,300)
     update_canvas()

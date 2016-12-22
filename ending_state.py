@@ -15,10 +15,10 @@ BGM = None
 def enter():
     global image,BGM
     open_canvas(600,800)
-    image=load_image('kpu_credit.png')
+    image=load_image('BackGround\\kpu_credit.png')
 
     global BGM
-    BGM = load_music('logo_background.mp3')
+    BGM = load_music('Sound\\logo_background.mp3')
     BGM.set_volume(64)
     BGM.repeat_play()
     pass

@@ -18,11 +18,11 @@ class Attack:
 		self.r2_image = load_image('Player\\bullet_raby_two.png')
 		self.r3_image = load_image('Player\\bullet_raby_three.png')
 		
-		self.LD = load_image('bullet_02_01.png')
-		self.RD = load_image('hatzling_03_01.png')
+		self.LD = load_image('Monster\\bullet_02_01.png')
+		self.RD = load_image('Monster\\hatzling_03_01.png')
 		
 		if Attack.Gun_Sound == None:
-			Attack.Gun_Sound = load_wav('missile_show.wav')
+			Attack.Gun_Sound = load_wav('Sound\\missile_show.wav')
 			Attack.Gun_Sound.set_volume(32)
 		
 		self.bX =100

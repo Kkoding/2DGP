@@ -62,6 +62,7 @@ class Boss:
 		self.Rope=1
 		self.Timer=0
 		self.num=0
+		self.ENDING=False
 		
 	#def __del__(self):
 		#del self.Boss_image
@@ -138,6 +139,7 @@ class Boss:
 			if self.SlimeHp>=0:
 				self.Reds_image.clip_draw(512*self.Bframe%4,0,512,512,self.BXPos,self.BYPos)
 			else:
+				self.ENDING=True
 				self.Red_Die_image.clip_draw(0, 0, 500, 485, self.BXPos, self.BYPos )
 					
 				

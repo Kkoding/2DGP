@@ -42,8 +42,8 @@ def exit():
 
 def update():
     global logo_time,YPos,Y2Pos
-    YPos-=5
-    Y2Pos-=5
+    YPos-=2
+    Y2Pos-=2
 	
 	    
     if(logo_time>2.0):

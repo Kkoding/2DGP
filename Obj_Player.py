@@ -29,7 +29,7 @@ class Player:
 	L_Hatch=False
 	R_Hatch=False
 	Protect=False
-	Money=0
+	Money = 10
 	def __init__(self):
 		self.p_image = load_image('Player\\character1.png')
 		self.Sunny = load_image('Player\\sunny.png')
