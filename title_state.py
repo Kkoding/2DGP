@@ -29,9 +29,12 @@ def enter():
     
     
 def exit():
-    global image,BG_Sound
+    global image,BG_Sound,image2,image3,BGM
     close_canvas()
     del(image)
+    del image2
+    del image3
+    del BGM
    
 def handle_events():
     events=get_events()

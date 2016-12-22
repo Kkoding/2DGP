@@ -343,22 +343,35 @@ def update():
 		for Obj_Monster in Mob:
 			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
-					del Obj_Monster
-					Player.Protect = False
+					if Player.Protect == False:
+						game_framework.change_state(lose_state)
+						return
+					else :
+						del Obj_Monster
+						Player.Protect = False
 	
 	elif MapState == Map2:
 		for Obj_Monster in YellowMonster:
 			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
-					del Obj_Monster
-					Player.Protect = False
+					if Player.Protect == False:
+						game_framework.change_state(lose_state)
+						return
+					else :
+						del Obj_Monster
+						Player.Protect = False
+					
 	
 	elif MapState == Map3:
 		for Obj_Monster in RedMonster:
 			if Obj_Monster.MonHp < 14:
 				if User.collide2(Obj_Monster) == True:
-					del Obj_Monster
-					Player.Protect = False
+					if Player.Protect == False:
+						game_framework.change_state(lose_state)
+						return
+					else:
+						del Obj_Monster
+						Player.Protect = False
 	
 	# 충돌체크 with Coin
 	if MapState == Map1:
@@ -388,6 +401,7 @@ def update():
 						Obj_Monster.C_Get = True
 						Player.Money += 1
 						del Obj_Monster
+					
 						
 						
 	# Player
@@ -520,7 +534,7 @@ def draw():
 	#         RedMonster[i].C_draw_bb()
 	
 	update_canvas()
-	delay(0.05)
+	delay(0.03)
 
 
 def exit():
@@ -577,6 +591,8 @@ def handle_events():
 			game_framework.change_state(lose_state)
 		elif event.key == SDLK_4:
 			game_framework.change_state(win_state)
+		elif event.key == SDLK_5:
+			Player.Protect=False
 		else:
 			User.handle_event(event)
 			Stage.handle_event(event)

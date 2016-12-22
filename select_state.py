@@ -13,7 +13,7 @@ from Collision import *
 
 name = "SelectState"
 image = None
-BG_Sound = None
+#BG_Sound = None
 
 Raby, Sunny = 0, 1
 def enter():
@@ -29,7 +29,7 @@ def exit():
 	global image, BG_Sound
 	close_canvas()
 	del (image)
-	del(BG_Sound)
+	#del(BG_Sound)
 
 
 def handle_events():

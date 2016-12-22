@@ -8,7 +8,7 @@ class Attack:
 	
 	Lev1, Lev2, Lev3 = 0, 1, 2
 	Rev1, Rev2, Rev3 = 0, 1, 2
-	Gun_Sound=None
+	#Gun_Sound=None
 	def __init__(self):
 		self.b1_image = load_image('Player\\bullet_sunny.png')
 		self.b2_image = load_image('Player\\bullet_sunny_two.png')
@@ -21,9 +21,9 @@ class Attack:
 		self.LD = load_image('Monster\\bullet_02_01.png')
 		self.RD = load_image('Monster\\hatzling_03_01.png')
 		
-		if Attack.Gun_Sound == None:
-			Attack.Gun_Sound = load_wav('Sound\\missile_show.wav')
-			Attack.Gun_Sound.set_volume(32)
+		#if Attack.Gun_Sound == None:
+		#	Attack.Gun_Sound = load_wav('Sound\\missile_show.wav')
+		#	Attack.Gun_Sound.set_volume(32)
 		
 		self.bX =100
 		self.bY = 50
@@ -46,12 +46,13 @@ class Attack:
 		del self.r3_image
 		del self.LD
 		del self.RD
+		#del Attack.Gun_Sound
 		
 		
 		
 	def update(self,xPos):
 	#	self.Shot_sound.play()
-		self.Gun_Sound.play()
+	#	self.Gun_Sound.play()
 		if self.Drawing == False:
 			self.bX = xPos
 			self.bY = 50

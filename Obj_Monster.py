@@ -50,6 +50,7 @@ class Monster:
 		self.CY=0
 		self.CY_Move = False
 		self.C_Get=False
+		
 	def __del__(self):
 		del self.Hp0
 		del self.Hp1
@@ -84,7 +85,6 @@ class Monster:
 				self.CY+=30
 				if(self.CY == 240):
 					self.CY_Move=True
-				
 	
 	def Damege(self,num):
 		self.MonHp += num
@@ -98,7 +98,8 @@ class Monster:
 			elif Map == 2:
 				self.Red.clip_draw(180 * self.MonFrame, 0, 180, 120, self.SizeOfMobX, self.y)
 		else:
-			self.Coin.clip_draw(0,0,32,32,self.SizeOfMobX, self.y+self.CY)
+			if self.C_Get==False:
+				self.Coin.clip_draw(0,0,32,32,self.SizeOfMobX, self.y+self.CY)
 		
 				 		 
 		if self.Damaged == True:

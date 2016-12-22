@@ -64,15 +64,15 @@ class Boss:
 		self.num=0
 		self.ENDING=False
 		
-	#def __del__(self):
-		#del self.Boss_image
-		#del self.Slime_Die_image
-		#del self.Stone_Die_image
-		#del self.Stone_image
-		#del self.BossHpImage
-		#del self.Boss_Bullet
-		#del self.Reds_image
-		#del self.Red_Die_image
+	def __del__(self):
+		del self.Boss_image
+		del self.Slime_Die_image
+		del self.Stone_Die_image
+		del self.Stone_image
+		del self.BossHpImage
+		del self.Boss_Bullet
+		del self.Reds_image
+		del self.Red_Die_image
 		
 	def update(self,Map):
 		self.imagetimer+=0.5

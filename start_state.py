@@ -29,7 +29,7 @@ def exit():
     global image,BGM
     close_canvas()
     del(image)
-    del(BGM)
+   # del(BGM)
     pass
 
 
