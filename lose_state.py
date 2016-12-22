@@ -25,9 +25,9 @@ def enter():
     image2 = load_image('BackGround\\01.png')
     image3 = load_image('BackGround\\01.png')
     global BGM
-   # BGM = load_music('Sound\\boss_background.mp3')
-   # BGM.set_volume(64)
-   # BGM.repeat_play()
+    BGM = load_music('Sound\\boss_background.mp3')
+    BGM.set_volume(64)
+    BGM.repeat_play()
     pass
 
 
